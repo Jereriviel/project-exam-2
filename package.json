@@ -1,0 +1,63 @@
+{
+  "name": "project-exam-2",
+  "version": "1.0.0",
+  "description": "The project demonstrates skills learnt over the past two years. The final product should reflect the candidate’s general development capabilities and visual and technical skills.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "preview": "vite preview",
+    "prepare": "husky"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jereriviel/project-exam-2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jereriviel/project-exam-2/issues"
+  },
+  "homepage": "https://github.com/Jereriviel/project-exam-2#readme",
+  "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@tanstack/react-query": "^5.99.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-hook-form": "^7.72.1",
+    "react-router-dom": "^7.14.1",
+    "react-toastify": "^11.0.5",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@iconify/json": "^2.2.464",
+    "@iconify/tailwind4": "^1.2.3",
+    "@tailwindcss/vite": "^4.2.2",
+    "@tanstack/react-query-devtools": "^5.99.2",
+    "@types/node": "^25.6.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "babel-plugin-react-compiler": "^1.0.0",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.7.2",
+    "tailwindcss": "^4.2.2",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.58.2",
+    "vite": "^8.0.8"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint --cache --fix",
+    "*.{ts,tsx,js,css,md,html,json}": "prettier --write"
+  }
+}
