@@ -1,3 +1,5 @@
+import type { ApiError } from "../types/api";
+
 async function apiFetch<T>(
   endpoint: string,
   options: RequestInit = {},
@@ -23,7 +25,24 @@ async function apiFetch<T>(
   }
 
   if (!response.ok) {
-    throw new Error(`API request failed: ${response.status}`);
+    let errorMessage = "Something went wrong";
+    let errors: ApiError["errors"];
+
+    try {
+      const data = await response.json();
+      errorMessage = data?.message || errorMessage;
+      errors = data.errors;
+    } catch {
+      errorMessage = await response.text();
+    }
+
+    const error: ApiError = {
+      status: response.status,
+      message: errorMessage,
+      errors,
+    };
+
+    throw error;
   }
 
   return response.json();
