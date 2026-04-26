@@ -1,1 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&display=swap");
 @import "tailwindcss";
+
+@plugin "@iconify/tailwind4" {
+  scale: 1.3;
+  prefix: "iconify";
+}
+
+@theme {
+  /* Fonts */
+  --font-primary: "Red Hat Text", "sans-serif";
+  --font-display: "Red Hat Display", "sans-serif";
+
+  /* Colors */
+  --color-primary-ultra-light: oklch(0.9859 0.0076 48.66);
+  --color-primary-light: oklch(0.8595 0.079 40.09);
+  --color-primary: oklch(0.6629 0.2011 37.51);
+  --color-primary-medium: oklch(0.558 0.1718 37.43);
+  --color-primary-dark: oklch(0.4603 0.1407 37.17);
+
+  --color-secondary-ultra-light: oklch(0.9942 0.0069 88.64);
+  --color-secondary-light: oklch(0.9729 0.0272 83.54);
+  --color-secondary: oklch(0.8068 0.1246 80.9);
+  --color-secondary-medium: oklch(0.7096 0.1382 78.09);
+  --color-secondary-dark: oklch(0.6209 0.131776 73.7118);
+
+  --color-gray-light: oklch(0.9642 0 0);
+  --color-gray-medium: oklch(0.8297 0 0);
+  --color-gray-dark: oklch(0.4926 0 0);
+
+  --color-error-light: oklch(0.9408 0.0297 17.69);
+  --color-error: oklch(0.5707 0.2268 28.54);
+  --color-error-dark: oklch(0.4954 0.1948 28.33);
+  --color-success: oklch(0.9551 0.0789 144.93);
+}
+
+@layer base {
+  html {
+    @apply font-primary scroll-smooth;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-semibold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark w-full rounded-xl px-5 py-3 text-center font-medium text-white transition duration-500 ease-in-out sm:w-fit;
+  }
+
+  .btn-primary-sm {
+    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark w-full rounded-xl px-4 py-2 text-center text-sm font-medium text-white transition duration-500 ease-in-out sm:w-fit;
+  }
+
+  .btn-primary-round {
+    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark size-8 rounded-full text-center font-medium text-white transition duration-500 ease-in-out;
+  }
+
+  .btn-secondary {
+    @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium w-full rounded-xl border-2 px-5 py-3 text-center font-medium transition duration-500 ease-in-out sm:w-fit;
+  }
+
+  .btn-delete {
+    @apply bg-error-light border-error hover:bg-error text-error w-full rounded-xl border-2 px-5 py-3 text-center font-medium transition duration-500 ease-in-out hover:text-white sm:w-fit;
+  }
+
+  .btn-pagination {
+    @apply hover:bg-primary-ultra-light active:bg-primary-light size-10 rounded-full bg-transparent text-center font-medium text-black transition duration-500 ease-in-out;
+  }
+
+  .btn-close {
+    @apply hover:bg-primary-ultra-light active:bg-primary-light size-10 rounded-full bg-transparent text-center font-medium text-black transition duration-500 ease-in-out;
+  }
+}
+
+@layer utilities {
+}
