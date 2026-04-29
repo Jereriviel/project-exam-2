@@ -16,10 +16,12 @@ const ErrorModal = ({ isOpen, onClose, error }: ErrorModalProps) => {
         <hr className="text-gray-medium" />
         <div className="flex items-center gap-2">
           <span className="iconify-[material-symbols--error-outline]"></span>
-          <p>{`"${error.statusCode} ${error.status}"`}</p>
+          <p className="font-medium">{`${error.statusCode} ${error.status}`}</p>
         </div>
-
-        <p>Something went wrong, please try again.</p>
+        <div className="flex gap-2">
+          <p>{`${error.message}.`}</p>
+          <p>Please try again.</p>
+        </div>
       </div>
       <div className="flex w-full justify-end">
         <button className="btn-primary" onClick={onClose}>
