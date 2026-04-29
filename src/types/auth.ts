@@ -1,6 +1,6 @@
 import type { Media } from "./media";
 
-export interface AuthUser {
+export interface User {
   name: string;
   email: string;
   bio?: string;
@@ -20,7 +20,7 @@ export interface RegisterRequest {
 }
 
 export interface RegisterResponse {
-  data: AuthUser;
+  data: User;
   meta: Record<string, unknown>;
 }
 
@@ -29,7 +29,7 @@ export interface LoginRequest {
   password: string;
 }
 
-export interface LoginUser extends AuthUser {
+export interface LoginUser extends User {
   accessToken?: string;
 }
 
@@ -43,4 +43,13 @@ export interface LoginResponse {
     venueManager?: boolean;
   };
   meta: Record<string, unknown>;
+}
+
+export interface AuthContextType {
+  user: User | null;
+  token: string | null;
+  isAuthenticated: boolean;
+  isLoading: boolean;
+  login: (token: string, user: User) => void;
+  logout: () => void;
 }
