@@ -1,20 +1,18 @@
-interface InputProps {
-  placeholder: string;
+import { Field, Label, Input as HeadlessInput } from "@headlessui/react";
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-const Input = ({ placeholder, label }: InputProps) => {
+const Input = ({ label, ...props }: InputProps) => {
   return (
-    <>
-      <label className="flex flex-col gap-1 text-lg font-semibold">
-        {label}
-        <input
-          type="text"
-          className="border-gray-medium rounded-xl border bg-white px-4 py-2 text-lg font-normal"
-          placeholder={placeholder}
-        />
-      </label>
-    </>
+    <Field className="flex flex-col gap-1">
+      <Label className="text-lg font-semibold">{label}</Label>
+      <HeadlessInput
+        {...props}
+        className="border-gray-medium rounded-xl border bg-white px-4 py-2 text-lg font-normal"
+      />
+    </Field>
   );
 };
 
