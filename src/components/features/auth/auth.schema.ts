@@ -3,6 +3,8 @@ import { z } from "zod";
 const authSchema = z.object({
   email: z
     .string()
+    .trim()
+    .min(2, "Email is required")
     .email("Invalid email address")
     .refine((email) => email.endsWith("@stud.noroff.no"), {
       message: "Email must be a valid stud.noroff.no address",
@@ -16,6 +18,7 @@ export const registerSchema = authSchema
   .extend({
     name: z
       .string()
+      .trim()
       .min(2, "Name is required")
       .regex(
         /^[a-zA-Z0-9_]+$/,
