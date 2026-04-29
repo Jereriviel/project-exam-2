@@ -4,13 +4,13 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label: string;
 }
 
-const Input = ({ label, ...props }: InputProps) => {
+const Input = ({ label, className, ...props }: InputProps) => {
   return (
     <Field className="flex flex-col gap-1">
-      <Label className="text-lg font-semibold">{label}</Label>
+      <Label className="font-semibold">{label}</Label>
       <HeadlessInput
         {...props}
-        className="border-gray-medium rounded-xl border bg-white px-4 py-2 text-lg font-normal"
+        className={`border-gray-medium rounded-xl border bg-white px-4 py-2 font-normal ${className}`}
       />
     </Field>
   );
