@@ -9,39 +9,17 @@ export interface User {
   venueManager?: boolean;
 }
 
-export interface RegisterRequest {
-  name: string;
-  email: string;
-  password: string;
-  bio?: string;
-  avatar?: Media;
-  banner?: Media;
-  venueManager?: boolean;
-}
-
 export interface RegisterResponse {
   data: User;
   meta: Record<string, unknown>;
 }
 
-export interface LoginRequest {
-  email: string;
-  password: string;
-}
-
 export interface LoginUser extends User {
-  accessToken?: string;
+  accessToken: string;
 }
 
 export interface LoginResponse {
-  data: {
-    name: string;
-    email: string;
-    avatar?: Media;
-    banner?: Media;
-    accessToken: string;
-    venueManager?: boolean;
-  };
+  data: LoginUser;
   meta: Record<string, unknown>;
 }
 
