@@ -1,16 +1,15 @@
-import { useEffect } from "react";
+import { Helmet } from "react-helmet-async";
 import RegisterForm from "../components/features/auth/RegisterForm";
 import { Link } from "react-router-dom";
 
 function RegisterPage() {
-  useEffect(() => {
-    document.title = "Holidaze| Register";
-
-    const meta = document.querySelector("meta[name='description']");
-    if (meta) {
-      meta.setAttribute("content", "Create a new personal account on Holidaze");
-    }
-  }, []);
+  <Helmet>
+    <title>Holidaze | Register</title>
+    <meta
+      name="description"
+      content="Register your personal account on Holidaze"
+    />
+  </Helmet>;
 
   return (
     <div className="w-full max-w-100 space-y-8 px-4">
