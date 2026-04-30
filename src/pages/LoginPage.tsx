@@ -7,10 +7,11 @@ function LoginPage() {
       <LoginForm />
       <div className="flex flex-col gap-2 sm:flex-row">
         <p>Don't have an account?</p>
-        <Link to={"/register"}>
-          <p className="hover:text-primary font-semibold transition duration-500 ease-in-out">
-            Register here
-          </p>
+        <Link
+          className="hover:text-primary font-semibold transition duration-500 ease-in-out"
+          to={"/register"}
+        >
+          Register here
         </Link>
       </div>
     </div>

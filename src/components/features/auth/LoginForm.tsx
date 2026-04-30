@@ -40,13 +40,7 @@ const LoginForm = () => {
       navigate("/");
     } catch (error) {
       if (error instanceof ApiError) {
-        if (error.statusCode === 401) {
-          setApiError(
-            new ApiError(401, "Unauthorized", "Invalid email or password"),
-          );
-        } else {
-          setApiError(error);
-        }
+        setApiError(error);
       } else {
         setApiError(
           new ApiError(500, "Server Error", "An unexpected error occurred"),
@@ -60,7 +54,6 @@ const LoginForm = () => {
     <>
       <form id="login-form" onSubmit={handleSubmit(onSubmit)}>
         <Fieldset
-          id="contact-fieldset"
           className={`flex flex-col gap-8 ${isSubmitting ? "opacity-50" : ""}`}
           disabled={isSubmitting}
         >

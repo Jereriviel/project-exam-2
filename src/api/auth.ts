@@ -20,5 +20,5 @@ export const registerUser = async (
   return (await post<RegisterResponse>(
     "/auth/register",
     userData,
-  )) as LoginResponse;
+  )) as RegisterResponse;
 };

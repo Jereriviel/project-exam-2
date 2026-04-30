@@ -9,7 +9,6 @@ interface ErrorModalProps {
 
 const ErrorModal = ({ isOpen, onClose, error }: ErrorModalProps) => {
   if (!error) return null;
-
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={`Error`}>
       <div className="space-y-4 text-lg">
@@ -18,8 +17,13 @@ const ErrorModal = ({ isOpen, onClose, error }: ErrorModalProps) => {
           <span className="iconify-[material-symbols--error-outline]"></span>
           <p className="font-medium">{`${error.statusCode} ${error.status}`}</p>
         </div>
-        <div className="flex gap-2">
-          <p>{`${error.message}.`}</p>
+
+        <div className="flex flex-wrap gap-2">
+          <div className="flex flex-col gap-1">
+            {error.errors.map((err, index) => (
+              <p key={index}>{err.message}.</p>
+            ))}
+          </div>
           <p>Please try again.</p>
         </div>
       </div>
