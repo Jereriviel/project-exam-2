@@ -83,7 +83,7 @@ const LoginForm = () => {
             />
             <Field>
               <button
-                className={`btn-primary mt-4 flex h-12 w-21.5 items-center justify-center ${
+                className={`btn-primary mt-4 flex h-12 items-center justify-center sm:w-21.5 ${
                   isSubmitting ? "cursor-not-allowed opacity-50" : ""
                 }`}
                 type="submit"
