@@ -1,5 +1,5 @@
-export interface ApiError {
-  status: number;
+export interface ApiErrorDetail {
+  code?: string;
   message: string;
-  errors?: Record<string, string[]>;
+  path?: string[];
 }
