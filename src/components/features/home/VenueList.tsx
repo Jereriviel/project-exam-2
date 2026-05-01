@@ -1,7 +1,7 @@
-import VenueCard from "./VenueCard";
+import VenueCard from "../venues/VenueCard";
 import type { Venue } from "../../../types/venue";
 import { useVenues } from "../../../hooks/useVenues";
-import VenueCardSkeleton from "./VenueCardSkeleton";
+import VenueCardSkeleton from "../venues/VenueCardSkeleton";
 
 const VenueList = () => {
   const { data: response, isLoading, isError, error } = useVenues();
