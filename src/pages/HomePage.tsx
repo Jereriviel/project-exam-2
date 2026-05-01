@@ -1,7 +1,14 @@
+import VenueList from "../components/features/venues/VenueList";
+
 function HomePage() {
   return (
     <>
-      <h1>Home Page</h1>
+      <section className="p-4 sm:py-8">
+        <div className="py-4">
+          <h1 className="text-4xl">Venues</h1>
+        </div>
+        <VenueList />
+      </section>
     </>
   );
 }
