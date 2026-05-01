@@ -1,27 +1,42 @@
 import VenueCard from "./VenueCard";
 import type { Venue } from "../../../types/venue";
 import { useVenues } from "../../../hooks/useVenues";
+import VenueCardSkeleton from "./VenueCardSkeleton";
 
 const VenueList = () => {
   const { data: response, isLoading, isError, error } = useVenues();
 
-  if (isLoading) {
-    return <div>Loading skeleton to be added</div>;
-  }
-
   if (isError) {
-    return <div>Error: {error.message}</div>;
+    return (
+      <div className="flex flex-col gap-2 font-medium">
+        <p>Oops!</p>
+        <p>{error.message}.</p>
+        <p>Please try again later.</p>
+      </div>
+    );
   }
 
-  if (!response || response.data.length === 0) {
-    return <div className="py-10 text-center">No venues found.</div>;
+  if (!isLoading && (!response || response.data.length === 0)) {
+    return (
+      <div>
+        <p className="font-medium">No venues found.</p>
+      </div>
+    );
   }
 
   return (
     <div className="flex flex-wrap gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-      {response.data.map((venue: Venue) => (
-        <VenueCard key={venue.id} venue={venue} />
-      ))}
+      {isLoading
+        ? Array.from({ length: 8 }).map((_, i) => (
+            <div key={`skeleton-${i}`} className="fade-in">
+              <VenueCardSkeleton />
+            </div>
+          ))
+        : response?.data.map((venue: Venue) => (
+            <div key={venue.id} className="fade-in">
+              <VenueCard venue={venue} />
+            </div>
+          ))}
     </div>
   );
 };
