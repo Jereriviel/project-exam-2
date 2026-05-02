@@ -7,6 +7,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import ProfilePage from "../pages/ProfilePage";
 import GuestRoute from "./GuestRoute";
+import SearchPage from "../pages/SearchPage";
 
 const AppRoutes = () => {
   return (
@@ -14,6 +15,7 @@ const AppRoutes = () => {
       <Route element={<MainLayout />}>
         <Route path="/" element={<HomePage />} />
         <Route path="/venue/:id" element={<VenuePage />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route
           path="/login"
           element={
