@@ -1,5 +1,7 @@
 import VenueList from "../components/features/home/VenueList";
 import { Helmet } from "react-helmet-async";
+import Container from "../layouts/Container";
+import Hero from "../components/features/home/Hero";
 
 <Helmet>
   <title>Holidaze | Book your stay</title>
@@ -12,13 +14,15 @@ import { Helmet } from "react-helmet-async";
 function HomePage() {
   return (
     <>
-      <section className="w-full p-4 sm:py-8"></section>
-      <section className="w-full p-4 sm:py-8">
-        <div className="py-4">
-          <h1 className="text-4xl">Venues</h1>
-        </div>
-        <VenueList />
-      </section>
+      <Hero />
+      <Container>
+        <section className="w-full">
+          <div className="py-4">
+            <h1 className="text-4xl">Venues</h1>
+          </div>
+          <VenueList />
+        </section>
+      </Container>
     </>
   );
 }

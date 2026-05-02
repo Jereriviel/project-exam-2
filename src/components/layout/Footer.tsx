@@ -3,7 +3,7 @@ import logoWhite from "../../../public/holidaze_logo_white.svg";
 const Footer = () => {
   return (
     <>
-      <footer className="bg-primary-dark bottom-0 mb-0 w-full px-4 py-8 sm:px-12">
+      <footer className="bg-primary-dark bottom-0 mb-0 w-full px-4 py-8 sm:px-8">
         <div className="mx-auto flex max-w-7xl flex-col justify-center gap-4 text-white">
           <img
             src={logoWhite}

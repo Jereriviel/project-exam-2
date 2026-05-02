@@ -4,7 +4,7 @@ import logoPrimary from "../../../public/holidaze_logo_primary.svg";
 const Header = () => {
   return (
     <>
-      <header className="bg-secondary-light sticky top-0 z-50 mt-0 w-full p-4 sm:px-12">
+      <header className="bg-secondary-light sticky top-0 z-50 mt-0 w-full p-4 sm:px-8">
         <div className="mx-auto flex max-w-7xl items-center justify-between">
           <Link to={"/"} aria-label="Home">
             <img

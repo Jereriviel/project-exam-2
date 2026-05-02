@@ -6,7 +6,7 @@ function MainLayout() {
   return (
     <>
       <Header />
-      <main className="mx-auto flex min-h-0 w-full max-w-7xl grow flex-col items-center gap-8 sm:px-12">
+      <main className="flex min-h-0 w-full grow flex-col items-center gap-8">
         <Outlet />
       </main>
       <Footer />
