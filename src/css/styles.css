@@ -24,7 +24,7 @@
   --color-secondary-medium: oklch(0.7096 0.1382 78.09);
   --color-secondary-dark: oklch(0.6209 0.131776 73.7118);
 
-  --color-gray-light: oklch(0.9642 0 0);
+  --color-gray-light: oklch(0.9521 0 0);
   --color-gray-medium: oklch(0.8297 0 0);
   --color-gray-dark: oklch(0.4926 0 0);
 
@@ -60,7 +60,7 @@
 
 @layer components {
   .btn-primary {
-    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark w-full rounded-xl px-5 py-3 text-center font-medium text-white transition duration-500 ease-in-out sm:w-fit;
+    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark w-full rounded-xl px-5 py-2.5 text-center font-medium text-white transition duration-500 ease-in-out sm:w-fit;
   }
 
   .btn-primary-sm {
@@ -72,7 +72,11 @@
   }
 
   .btn-secondary {
-    @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium w-full rounded-xl border-2 px-5 py-3 text-center font-medium transition duration-500 ease-in-out sm:w-fit;
+    @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium w-full rounded-xl border-2 px-5 py-2 text-center font-medium transition duration-500 ease-in-out sm:w-fit;
+  }
+
+  .btn-search-mobile {
+    @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium flex h-11 w-11 items-center justify-center rounded-xl border-2 transition duration-500 ease-in-out;
   }
 
   .btn-delete {
