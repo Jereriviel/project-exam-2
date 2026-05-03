@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { getAllVenues } from "../api/venues";
-import type { VenuesResponse } from "../types/venue";
+import { getVenues } from "../api/venues";
 
-export const useVenues = () => {
-  return useQuery<VenuesResponse, Error>({
-    queryKey: ["venues"],
-    queryFn: () => getAllVenues(),
+export const useVenues = (searchTerm?: string) => {
+  return useQuery({
+    queryKey: ["venues", searchTerm],
+    queryFn: () => getVenues({ searchTerm }),
   });
 };

@@ -3,8 +3,12 @@ import type { Venue } from "../../../types/venue";
 import { useVenues } from "../../../hooks/useVenues";
 import VenueCardSkeleton from "../venues/VenueCardSkeleton";
 
-const VenueList = () => {
-  const { data: response, isLoading, isError, error } = useVenues();
+type VenueListProps = {
+  searchTerm?: string;
+};
+
+const VenueList = ({ searchTerm }: VenueListProps) => {
+  const { data: response, isLoading, isError, error } = useVenues(searchTerm);
 
   if (isError) {
     return (
