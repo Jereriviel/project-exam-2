@@ -34,3 +34,16 @@ export interface VenueLocation {
   lat: number;
   lng: number;
 }
+
+export interface VenuesResponse {
+  data: Venue[];
+  meta: {
+    isFirstPage: boolean;
+    isLastPage: boolean;
+    currentPage: number;
+    previousPage: number | null;
+    nextPage: number | null;
+    pageCount: number;
+    totalCount: number;
+  };
+}
