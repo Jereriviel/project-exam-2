@@ -5,12 +5,16 @@ export type VenueQueryProps = {
   searchTerm?: string;
   page?: number;
   limit?: number;
+  sort?: string;
+  sortOrder?: "asc" | "desc";
 };
 
 export const getVenues = async ({
-  searchTerm,
   page = 1,
   limit = 12,
+  searchTerm = "",
+  sort,
+  sortOrder = "desc",
 }: VenueQueryProps = {}): Promise<VenuesResponse> => {
   const params = new URLSearchParams();
 
@@ -20,6 +24,8 @@ export const getVenues = async ({
 
   params.append("page", page.toString());
   params.append("limit", limit.toString());
+  if (sort) params.append("sort", sort);
+  if (sortOrder) params.append("sortOrder", sortOrder);
 
   const queryString = params.toString();
 
