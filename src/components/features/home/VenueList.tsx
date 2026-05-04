@@ -5,6 +5,7 @@ import type { Venue } from "../../../types/venue";
 import { useVenues } from "../../../hooks/useVenues";
 import VenueCardSkeleton from "../venues/VenueCardSkeleton";
 import VenuePagination from "../../ui/Pagination";
+import VenueSortSelect from "../venues/VenueSortSelect";
 
 type VenueListProps = {
   searchTerm?: string;
@@ -14,16 +15,33 @@ const VenueList = ({ searchTerm }: VenueListProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
   const limit = 12;
+  const sortField = searchParams.get("sort") || undefined;
+  const sortOrder =
+    (searchParams.get("sortOrder") as "asc" | "desc") || undefined;
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }, [currentPage, searchTerm]);
+  }, [currentPage, searchTerm, sortField, sortOrder]);
 
-  const handlePageChange = (page: number) => {
-    setSearchParams({ page: page.toString() });
+  const updateParams = (newParams: Record<string, string>) => {
+    const params = new URLSearchParams(searchParams);
+    Object.entries(newParams).forEach(([key, value]) => {
+      if (value) params.set(key, value);
+      else params.delete(key);
+    });
+    setSearchParams(params);
+  };
+
+  const handleSortChange = (value: string) => {
+    if (value === "all-venues") {
+      updateParams({ page: "1", sort: "", sortOrder: "" });
+    } else {
+      const [field, order] = value.split("-");
+      updateParams({ page: "1", sort: field, sortOrder: order });
+    }
   };
 
   const {
@@ -31,7 +49,11 @@ const VenueList = ({ searchTerm }: VenueListProps) => {
     isLoading,
     isError,
     error,
-  } = useVenues(searchTerm, currentPage, limit);
+  } = useVenues(searchTerm, currentPage, limit, sortField, sortOrder);
+
+  const currentSortValue = sortField
+    ? `${sortField}-${sortOrder}`
+    : "all-venues";
 
   if (isError) {
     return (
@@ -53,6 +75,10 @@ const VenueList = ({ searchTerm }: VenueListProps) => {
 
   return (
     <div className="flex flex-col gap-4">
+      <VenueSortSelect
+        currentValue={currentSortValue}
+        onChange={handleSortChange}
+      />
       <div className="flex flex-wrap gap-6 sm:grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {isLoading
           ? Array.from({ length: 8 }).map((_, i) => (
@@ -70,7 +96,7 @@ const VenueList = ({ searchTerm }: VenueListProps) => {
         <VenuePagination
           currentPage={response.meta.currentPage}
           pageCount={response.meta.pageCount}
-          onPageChange={(page) => handlePageChange(page)}
+          onPageChange={(page) => updateParams({ page: page.toString() })}
         />
       )}
     </div>

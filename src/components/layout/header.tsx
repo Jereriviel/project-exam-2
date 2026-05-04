@@ -17,7 +17,7 @@ const Header = () => {
           <div className="hidden w-full justify-center sm:flex">
             <SearchBar />
           </div>
-          <Link to={"/login"} aria-label="Login">
+          <Link to={"/login"} aria-label="Login" className="rounded-xl">
             <div className="btn-primary-sm sm:hidden">Login</div>
             <div className="btn-primary hidden sm:flex">Login</div>
           </Link>
