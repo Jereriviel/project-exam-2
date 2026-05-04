@@ -17,7 +17,7 @@ function HomePage() {
       <Hero />
       <Container>
         <section className="w-full">
-          <div className="py-4">
+          <div className="pb-8">
             <h1 className="text-4xl">Venues</h1>
           </div>
           <VenueList />
