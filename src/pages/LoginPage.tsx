@@ -13,8 +13,8 @@ function LoginPage() {
         />
       </Helmet>
 
-      <div className="flex w-full flex-1 flex-col items-center justify-center">
-        <div className="w-full max-w-100 space-y-8 px-4">
+      <div className="flex w-full flex-1 flex-col items-center justify-center px-4 py-8">
+        <div className="w-full max-w-100 space-y-8">
           <LoginForm />
           <div className="flex flex-col gap-2 sm:flex-row">
             <p>Don't have an account?</p>

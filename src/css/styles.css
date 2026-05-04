@@ -68,15 +68,15 @@
   }
 
   .btn-primary-round {
-    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark flex size-8 items-center justify-center rounded-full text-center font-medium text-white transition duration-500 ease-in-out;
+    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark flex size-8 items-center justify-center rounded-full text-center font-medium text-white transition duration-500 ease-in-out sm:size-10;
+  }
+
+  .btn-search {
+    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark flex size-10 items-center justify-center rounded-full text-center font-medium text-white transition duration-500 ease-in-out;
   }
 
   .btn-secondary {
     @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium w-full rounded-xl border-2 px-5 py-2 text-center font-medium transition duration-500 ease-in-out sm:w-fit;
-  }
-
-  .btn-search-mobile {
-    @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium flex h-11 w-11 items-center justify-center rounded-xl border-2 transition duration-500 ease-in-out;
   }
 
   .btn-delete {
