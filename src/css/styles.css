@@ -90,6 +90,10 @@
   .btn-close {
     @apply hover:bg-primary-ultra-light active:bg-primary-light flex size-10 items-center justify-center rounded-full bg-transparent text-center font-medium text-black transition duration-500 ease-in-out;
   }
+
+  .tag {
+    @apply bg-primary-ultra-light border-primary-light flex w-fit items-center gap-2 rounded-xl border px-3 py-2 font-semibold;
+  }
 }
 
 @layer utilities {
