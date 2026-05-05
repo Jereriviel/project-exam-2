@@ -29,7 +29,7 @@ const VenueSortSelect = ({ currentValue, onChange }: VenueSortSelectProps) => {
             </span>
             {SORT_OPTIONS.find((opt) => opt.value === currentValue)?.label}
           </ListboxButton>
-          <ListboxOptions className="absolute z-10 mt-1 max-h-60 w-full overflow-hidden rounded-xl bg-white shadow-lg">
+          <ListboxOptions className="border-gray-light absolute z-10 mt-1 max-h-60 w-full overflow-hidden rounded-xl border bg-white shadow-lg">
             {SORT_OPTIONS.map((option) => (
               <ListboxOption
                 key={option.value}

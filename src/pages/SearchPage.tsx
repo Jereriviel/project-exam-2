@@ -7,7 +7,7 @@ function SearchPage() {
       <Container>
         <section className="w-full py-4">
           <div className="py-4">
-            <h1 className="text-4xl">Search Results</h1>
+            <h1 className="text.2xl sm:text-4xl">Search Results</h1>
           </div>
           <SearchResults />
         </section>

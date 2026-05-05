@@ -32,8 +32,10 @@ const VenuePagination = ({
                 backgroundColor: "#ffb09a",
               },
             },
+            "&:focus": {
+              border: "2px solid #000000",
+            },
           },
-
           "& .MuiPaginationItem-ellipsis": {
             fontWeight: "600",
           },

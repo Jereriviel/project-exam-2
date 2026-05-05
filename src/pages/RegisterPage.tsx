@@ -14,12 +14,19 @@ function RegisterPage() {
       </Helmet>
 
       <div className="flex w-full flex-1 flex-col items-center justify-center px-4 py-8">
-        <div className="w-full max-w-100 space-y-8">
+        <div className="flex w-full max-w-100 flex-col gap-8">
+          <Link
+            className="hover:text-primary flex w-fit items-center gap-2 pr-1 font-semibold transition duration-250 ease-in-out"
+            to="/"
+          >
+            <span className="iconify-[material-symbols--arrow-back]"></span>
+            <p>Back</p>
+          </Link>
           <RegisterForm />
           <div className="flex flex-col gap-2 sm:flex-row">
             <p>Already have an account?</p>
             <Link
-              className="hover:text-primary font-semibold transition duration-500 ease-in-out"
+              className="hover:text-primary font-semibold transition duration-250 ease-in-out"
               to={"/login"}
             >
               Log in here

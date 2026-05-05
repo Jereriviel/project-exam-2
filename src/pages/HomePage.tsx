@@ -18,7 +18,7 @@ function HomePage() {
       <Container>
         <section className="w-full">
           <div className="pb-8">
-            <h1 className="text-4xl">Venues</h1>
+            <h1 className="text-2xl sm:text-4xl">Venues</h1>
           </div>
           <VenueList />
         </section>
