@@ -35,6 +35,11 @@ export interface VenueLocation {
   lng: number;
 }
 
+export interface SingleVenueResponse {
+  data: Venue;
+  meta: Record<string, unknown>;
+}
+
 export interface VenuesResponse {
   data: Venue[];
   meta: {
