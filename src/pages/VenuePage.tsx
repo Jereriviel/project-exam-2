@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { getVenueById } from "../api/venues";
 import Container from "../layouts/Container";
 import Breadcrumb from "../components/ui/BreadCrumb";
+import AmenityTagList from "../components/features/venues/AmenityTagList";
 
 function VenuePage() {
   const { id } = useParams<{ id: string }>();
@@ -32,7 +33,10 @@ function VenuePage() {
           <Breadcrumb venue={venue} />
         </div>
         <section className="w-full py-4">
-          <h1>{venue.name}</h1>
+          <h1 className="text-2xl sm:text-3xl">{venue.name}</h1>
+          <div className="py-4">
+            <AmenityTagList meta={venue.meta} />
+          </div>
         </section>
       </Container>
     </>
