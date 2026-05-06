@@ -47,7 +47,7 @@ export const getVenues = async ({
 };
 
 export const getVenueById = async (id: string): Promise<Venue> => {
-  const endpoint = `/holidaze/venues/${id}`;
+  const endpoint = `/holidaze/venues/${id}?_owner=true`;
   const response = await get<SingleVenueResponse>(endpoint);
 
   if (!response || !response.data) {
