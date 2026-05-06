@@ -13,7 +13,7 @@ const AmenityTag = ({ type, value }: TagProps) => {
 
   return (
     <div className="tag">
-      <span className={`${iconClass}`}></span>
+      <span className={iconClass}></span>
       <p>{text}</p>
     </div>
   );
