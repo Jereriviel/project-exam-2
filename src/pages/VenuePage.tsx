@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { getVenueById } from "../api/venues";
 import Container from "../layouts/Container";
-import Breadcrumb from "../components/ui/BreadCrumb";
+import Breadcrumb from "../components/ui/Breadcrumb";
 import type { Venue } from "../types/venue";
 import VenueDetails from "../components/features/venues/VenueDetails";
 import VenuePageSkeleton from "../components/features/venues/VenuePageLoadingSkeleton";
