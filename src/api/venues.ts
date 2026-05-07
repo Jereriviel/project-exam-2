@@ -1,5 +1,9 @@
 import { get } from "./api";
-import type { VenuesResponse } from "../types/venue";
+import type {
+  VenuesResponse,
+  Venue,
+  SingleVenueResponse,
+} from "../types/venue";
 
 export type VenueQueryProps = {
   searchTerm?: string;
@@ -40,4 +44,15 @@ export const getVenues = async ({
   }
 
   return data;
+};
+
+export const getVenueById = async (id: string): Promise<Venue> => {
+  const endpoint = `/holidaze/venues/${id}?_owner=true`;
+  const response = await get<SingleVenueResponse>(endpoint);
+
+  if (!response || !response.data) {
+    throw new Error("Venue not found");
+  }
+
+  return response.data;
 };

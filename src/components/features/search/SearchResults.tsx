@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import VenueList from "../home/VenueList";
+import VenueList from "../venues/VenueList";
 
 function SearchResults() {
   const [searchParams] = useSearchParams();
