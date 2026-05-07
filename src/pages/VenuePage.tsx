@@ -60,18 +60,19 @@ function VenuePage() {
     );
   }
 
+  const pageTitle = venue ? `Holidaze | ${venue.name}` : "Holidaze | Venue";
+
+  const pageDescription =
+    venue?.description?.slice(0, 160) || "Find unique venues on Holidaze.";
+
   return (
     <>
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
+      </Helmet>
       {venue && (
         <>
-          <Helmet>
-            <title>Holidaze | {venue.name}</title>
-            <meta
-              name="description"
-              content={venue.description.slice(0, 160)}
-            />
-          </Helmet>
-
           <Container>
             <div className="pt-4">
               <Breadcrumb venue={venue} />
