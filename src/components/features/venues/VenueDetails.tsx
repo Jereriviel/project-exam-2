@@ -50,7 +50,7 @@ const VenueDetails = ({ venue }: VenueDetailsProps) => {
           <p className="text-sm md:text-lg">per night</p>
         </div>
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-2">
         <h2 className="text-xl md:text-2xl">About</h2>
         <p className="md:text-lg">{venue.description}</p>
       </div>
@@ -62,7 +62,7 @@ const VenueDetails = ({ venue }: VenueDetailsProps) => {
           {`Up to ${venue.maxGuests} guests`}
         </div>
       </div>
-      <div className="flex items-center gap-2 md:text-lg">
+      <div className="flex items-center gap-2 py-4 md:text-lg">
         <img
           className="size-12 rounded-full object-cover"
           src={profileImageSrc}
