@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import VenueCard from "../venues/VenueCard";
+import VenueCard from "./VenueCard";
 import type { Venue } from "../../../types/venue";
 import { useVenues } from "../../../hooks/useVenues";
-import VenueCardSkeleton from "../venues/VenueCardSkeleton";
+import VenueCardSkeleton from "./VenueCardSkeleton";
 import VenuePagination from "../../ui/Pagination";
-import VenueSortSelect from "../venues/VenueSortSelect";
+import VenueSortSelect from "./VenueSortSelect";
 
 type VenueListProps = {
   searchTerm?: string;

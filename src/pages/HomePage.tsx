@@ -1,4 +1,4 @@
-import VenueList from "../components/features/home/VenueList";
+import VenueList from "../components/features/venues/VenueList";
 import { Helmet } from "react-helmet-async";
 import Container from "../layouts/Container";
 import Hero from "../components/features/home/Hero";
