@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./css/styles.css";
+import "react-day-picker/style.css";
 import App from "./App.tsx";
 import AuthProvider from "./context/AuthProvider.tsx";
 import { ToastContainer } from "react-toastify";
