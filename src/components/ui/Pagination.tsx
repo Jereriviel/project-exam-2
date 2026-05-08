@@ -20,7 +20,7 @@ const VenuePagination = ({
         onChange={(_, page) => onPageChange(page)}
         sx={{
           "& .MuiPaginationItem-root:not(.MuiPaginationItem-ellipsis)": {
-            backgroundColor: "#ffffff",
+            backgroundColor: "transparent",
             color: "#000000",
             fontWeight: "600",
             "&:hover": {

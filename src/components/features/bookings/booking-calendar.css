@@ -8,6 +8,7 @@
   --rdp-weekday-opacity: 0.6;
   --rdp-outside-opacity: 0.6;
   font-family: var(--font-primary);
+  width: 100%;
 }
 
 .rdp-day {
@@ -16,7 +17,7 @@
 
 .rdp-day_button {
   font-weight: 500;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1.25rem;
 }
 
 .rdp-range_start .rdp-day_button {
