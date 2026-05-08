@@ -7,7 +7,7 @@ const VenuePageSkeleton = () => {
         </div>
         <div className="bg-gray-light aspect-2/1 h-full max-h-152 w-full rounded-xl"></div>
         <div className="grid gap-8 lg:grid-cols-2 lg:justify-between">
-          <div className="flex min-w-0 flex-1 flex-col gap-6 py-6">
+          <div className="flex min-w-0 flex-1 flex-col gap-8 py-6">
             <div className="flex min-w-0 flex-col gap-4">
               <div className="bg-gray-light my-1 h-6 w-1/2 rounded-full sm:h-7 sm:w-1/3"></div>
               <div className="bg-gray-light sm: my-1 h-3 w-1/3 rounded-full sm:h-4 sm:w-1/4"></div>
