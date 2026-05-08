@@ -34,12 +34,6 @@
   --color-success: oklch(0.9551 0.0789 144.93);
 }
 
-.success-toast {
-  background-color: #d0ffd0 !important;
-  box-shadow: none;
-  border-radius: 0.75rem;
-}
-
 @layer base {
   html {
     @apply font-primary scroll-smooth;
