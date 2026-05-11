@@ -19,7 +19,7 @@ const BookingTotalNights = ({
   return (
     <div className="font flex items-center justify-between font-semibold">
       <p>
-        Total {nights} {nightLabel}
+        Total {nights} {nightLabel}:
       </p>
       <p className="text-lg">{totalAmount} NOK</p>
     </div>
