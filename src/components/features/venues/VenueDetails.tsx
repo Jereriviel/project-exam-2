@@ -87,7 +87,7 @@ const VenueDetails = ({ venue }: VenueDetailsProps) => {
         <section className="flex flex-col gap-4">
           <h2 className="text-xl md:text-2xl">Booking</h2>
           <div className="flex w-full justify-center sm:justify-start">
-            <BookingCalendarCard />
+            <BookingCalendarCard venue={venue} />
           </div>
         </section>
       </div>

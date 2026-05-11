@@ -1,13 +1,18 @@
-import { useState } from "react";
 import { DayPicker, type DateRange } from "react-day-picker";
 import "react-day-picker/style.css";
 import "./booking-calendar.css";
 
-export function BookingCalendar() {
-  const [selected, setSelected] = useState<DateRange | undefined>();
+interface BookingCalendarProps {
+  selected: DateRange;
+  onDateChange: (range: DateRange | undefined) => void;
+}
 
+export function BookingCalendar({
+  selected,
+  onDateChange,
+}: BookingCalendarProps) {
   const handleSelect = (range: DateRange | undefined) => {
-    setSelected(range);
+    onDateChange(range);
   };
 
   return (
@@ -19,16 +24,16 @@ export function BookingCalendar() {
         onSelect={handleSelect}
         required={true}
         resetOnSelect={true}
-        min={1}
-        max={100}
         excludeDisabled={true}
         showOutsideDays={true}
       />
       {selected?.from ? (
-        <p>
-          Fra: {selected.from.toLocaleDateString()}
-          Til: {selected.to ? selected.to.toLocaleDateString() : ""}
-        </p>
+        <div className="flex gap-2 pt-4 pb-2 font-medium">
+          <p>
+            From {selected.from.toLocaleDateString()} to{" "}
+            {selected.to ? selected.to.toLocaleDateString() : ""}
+          </p>
+        </div>
       ) : (
         <p></p>
       )}
