@@ -1,4 +1,5 @@
 import { Slide, toast } from "react-toastify";
+import "../Toast/toast.css";
 
 const ShowSuccessToast = (message: string) =>
   toast(

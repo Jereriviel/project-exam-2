@@ -7,7 +7,7 @@ import { Field, Fieldset, Legend } from "@headlessui/react";
 import { useAuth } from "../../../hooks/useAuth";
 import Input from "../../ui/Input";
 import LoadingSpinner from "../../ui/LoadingSpinner";
-import ShowSuccessToast from "../../ui/Toast";
+import ShowSuccessToast from "../../ui/Toast/Toast";
 import ErrorModal from "../../ui/ErrorModal";
 import { ApiError } from "../../../error/ApiError";
 import { loginUser } from "../../../api/auth";
