@@ -31,7 +31,8 @@
   --color-error-light: oklch(0.9408 0.0297 17.69);
   --color-error: oklch(0.5707 0.2268 28.54);
   --color-error-dark: oklch(0.4954 0.1948 28.33);
-  --color-success: oklch(0.9551 0.0789 144.93);
+  --color-success-light: oklch(0.9551 0.0789 144.93);
+  --color-success: oklch(0.650544 0.221363 142.4953);
 }
 
 @layer base {

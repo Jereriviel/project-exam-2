@@ -2,4 +2,14 @@
   background-color: #d0ffd0 !important;
   box-shadow: none;
   border-radius: 0.75rem;
+  font-size: 14px;
+  font-family: "Red Hat Text";
+}
+
+.fail-toast {
+  background-color: #ffe4e4 !important;
+  box-shadow: none;
+  border-radius: 0.75rem;
+  font-size: 14px;
+  font-family: "Red Hat Text";
 }
