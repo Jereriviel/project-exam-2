@@ -4,6 +4,8 @@ import fallbackImg from "../../../../public/fallback-img.jpg";
 import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
 import Rating from "./Rating";
 import BookingCalendarCard from "../bookings/BookingCalendarCard";
+import { useAuth } from "../../../hooks/useAuth";
+import { Link } from "react-router-dom";
 
 interface VenueDetailsProps {
   venue: Venue;
@@ -16,6 +18,7 @@ const VenueDetails = ({ venue }: VenueDetailsProps) => {
   const profileImageSrc = profileImage?.url
     ? profileImage.url
     : avatarFallbackImg;
+  const { isAuthenticated } = useAuth();
 
   return (
     <section className="flex w-full flex-col gap-4 pt-4 pb-8 md:gap-6">
@@ -84,10 +87,23 @@ const VenueDetails = ({ venue }: VenueDetailsProps) => {
             </div>
           </div>
         </div>
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col gap-4 lg:w-93">
           <h2 className="text-xl md:text-2xl">Booking</h2>
           <div className="flex w-full justify-center sm:justify-start">
-            <BookingCalendarCard venue={venue} />
+            {isAuthenticated ? (
+              <BookingCalendarCard venue={venue} />
+            ) : (
+              <div className="flex w-full flex-col gap-4">
+                <p className="sm:text-lg">Please log in to book this venue.</p>
+                <Link
+                  to="/login"
+                  className="btn-primary flex items-center justify-center gap-2"
+                >
+                  Go to Login
+                  <span className="iconify-[material-symbols--arrow-right-alt]"></span>
+                </Link>
+              </div>
+            )}
           </div>
         </section>
       </div>

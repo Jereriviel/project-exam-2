@@ -1,5 +1,6 @@
 import { type DateRange } from "react-day-picker";
 import { calculateBookingDetails } from "../../../utils/bookingCalculations";
+import { format } from "date-fns";
 
 interface BookingTotalNightsProps {
   dateRange: DateRange;
@@ -11,15 +12,15 @@ const BookingTotalNights = ({
   pricePerNight,
 }: BookingTotalNightsProps) => {
   const { nights, totalAmount, nightLabel } = calculateBookingDetails(
-    dateRange.from?.toISOString().split("T")[0] ?? "",
-    dateRange.to?.toISOString().split("T")[0] ?? "",
+    dateRange.from ? format(dateRange.from, "yyyy-MM-dd") : "",
+    dateRange.to ? format(dateRange.to, "yyyy-MM-dd") : "",
     pricePerNight,
   );
 
   return (
     <div className="font flex items-center justify-between font-semibold">
       <p>
-        Total {nights} {nightLabel}
+        Total {nights} {nightLabel}:
       </p>
       <p className="text-lg">{totalAmount} NOK</p>
     </div>
