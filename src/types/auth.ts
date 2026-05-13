@@ -3,6 +3,7 @@ import type { Media } from "./media";
 export interface User {
   name: string;
   email: string;
+  accessToken: string;
   bio?: string;
   avatar?: Media;
   banner?: Media;
