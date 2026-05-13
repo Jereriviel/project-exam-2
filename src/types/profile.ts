@@ -13,6 +13,18 @@ export interface Profile {
   _count: ProfileCounts;
 }
 
+export interface ProfileResponse {
+  data: Profile;
+  meta: Record<string, unknown>;
+}
+
+export interface UpdateProfileRequest {
+  bio?: string;
+  avatar?: Media;
+  banner?: Media;
+  venueManager?: boolean;
+}
+
 export interface ProfileVenueSummary {
   id: string;
   name: string;
@@ -27,6 +39,11 @@ export interface ProfileVenueSummary {
   location: VenueLocation;
 }
 
+export interface ProfileVenuesResponse {
+  data: ProfileVenueSummary[];
+  meta: Record<string, unknown>;
+}
+
 export interface ProfileBooking {
   id: string;
   dateFrom: string;
@@ -35,6 +52,11 @@ export interface ProfileBooking {
   created: string;
   updated: string;
   venue: ProfileVenueSummary;
+}
+
+export interface ProfileBookingsResponse {
+  data: ProfileBooking[];
+  meta: Record<string, unknown>;
 }
 
 export interface ProfileCounts {
