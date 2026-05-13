@@ -7,8 +7,9 @@ export function useProfile() {
 
   return useQuery({
     queryKey: ["profile", user?.name],
-    queryFn: () => getProfileById(user!.name),
-    enabled: !!user?.name,
-    staleTime: 1000 * 60 * 5,
+
+    queryFn: () => getProfileById(user!.name, user!.accessToken),
+
+    enabled: !!user?.name && !!user?.accessToken,
   });
 }
