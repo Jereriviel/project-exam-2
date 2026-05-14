@@ -43,7 +43,7 @@ const RegisterForm = () => {
         password: data.password,
       });
 
-      login(loginResponse.data.accessToken, loginResponse.data);
+      login(loginResponse.data);
       ShowSuccessToast("Registration successful!");
       navigate("/");
     } catch (error) {

@@ -1,28 +1,30 @@
 import { useState, useEffect, type ReactNode } from "react";
+import { useQueryClient } from "@tanstack/react-query";
 import { type AuthContextType, type User } from "../types/auth";
 import { AuthContext } from "./AuthContext";
 
 interface AuthProviderProps {
   children: ReactNode;
 }
+
 const AuthProvider = ({ children }: AuthProviderProps) => {
-  const [user, setUser] = useState(() => {
+  const queryClient = useQueryClient();
+
+  const [user, setUser] = useState<User | null>(() => {
     try {
-      const storeUser = localStorage.getItem("user");
-      return storeUser ? JSON.parse(storeUser) : null;
+      const storedUser = localStorage.getItem("user");
+      return storedUser ? JSON.parse(storedUser) : null;
     } catch {
       return null;
     }
   });
 
-  const [token, setToken] = useState(() => localStorage.getItem("accessToken"));
   const [isLoading, setIsLoading] = useState(true);
 
   const logout = () => {
-    setToken(null);
     setUser(null);
-    localStorage.removeItem("accessToken");
     localStorage.removeItem("user");
+    queryClient.clear();
   };
 
   useEffect(() => {
@@ -33,17 +35,15 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     initAuth();
   }, []);
 
-  const login = (newToken: string, userData: User) => {
-    localStorage.setItem("accessToken", newToken);
+  const login = (userData: User) => {
     localStorage.setItem("user", JSON.stringify(userData));
-    setToken(newToken);
     setUser(userData);
   };
 
   const value: AuthContextType = {
     user,
-    token,
-    isAuthenticated: !!token,
+    token: user?.accessToken || null,
+    isAuthenticated: !!user,
     isLoading,
     login,
     logout,

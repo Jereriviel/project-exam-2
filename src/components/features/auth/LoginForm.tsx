@@ -35,7 +35,7 @@ const LoginForm = () => {
   const onSubmit = async (data: LoginRequest) => {
     try {
       const response = await loginUser(data);
-      login(response.data.accessToken, response.data);
+      login(response.data);
       ShowSuccessToast("Logged in successfully!");
       navigate("/");
     } catch (error) {
