@@ -17,7 +17,7 @@ function SearchBar() {
     <Field
       as="form"
       onSubmit={handleSearch}
-      className="flex w-full max-w-2xl items-center gap-0.5 rounded-full bg-white"
+      className="flex w-full items-center gap-0.5 rounded-full bg-white md:max-w-2xl"
     >
       <div className="relative flex w-full items-center">
         <Input
