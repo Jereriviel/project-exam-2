@@ -10,7 +10,7 @@ import HeaderProfileError from "./HeaderProfileError";
 const Header = () => {
   const { isAuthenticated } = useAuth();
   const { data, isLoading, isError } = useProfile();
-  const profile = data?.data;
+  const profile = data;
 
   return (
     <>
