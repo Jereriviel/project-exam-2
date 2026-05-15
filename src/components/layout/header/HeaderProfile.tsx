@@ -43,7 +43,7 @@ const HeaderProfile = ({ profile }: HeaderProfileProps) => {
         >
           <MenuItem>
             <Link
-              to={"/profile"}
+              to={`/profile/${profile.name}`}
               aria-label="Profile"
               className="data-focus:bg-primary-ultra-light flex items-center gap-2 p-4"
             >

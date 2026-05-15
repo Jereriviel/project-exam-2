@@ -1,7 +1,6 @@
 import { get, put } from "./api";
 import type {
   Profile,
-  ProfileResponse,
   ProfileVenuesResponse,
   ProfileBookingsResponse,
   UpdateProfileRequest,
@@ -10,9 +9,9 @@ import type {
 export const getProfileById = async (
   id: string,
   token: string | null = null,
-): Promise<ProfileResponse> => {
+): Promise<Profile> => {
   const endpoint = `/holidaze/profiles/${id}`;
-  const data = await get<ProfileResponse>(endpoint, token);
+  const data = await get<Profile>(endpoint, token);
 
   if (!data) {
     throw new Error("No data received from server");
