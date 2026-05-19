@@ -4,9 +4,15 @@ import VenueManagerSwitch from "./VenueManagerSwitch";
 
 interface ProfileHeaderProps {
   profile: Profile;
+  onToggleVenueManager: () => void;
+  isUpdating: boolean;
 }
 
-const ProfileHeader = ({ profile }: ProfileHeaderProps) => {
+const ProfileHeader = ({
+  profile,
+  onToggleVenueManager,
+  isUpdating,
+}: ProfileHeaderProps) => {
   const profileImage = profile?.avatar;
   const profileImageSrc = profileImage?.url
     ? profileImage.url
@@ -48,7 +54,11 @@ const ProfileHeader = ({ profile }: ProfileHeaderProps) => {
                 </div>
                 <div className="flex flex-col">
                   <h3>Venue Manager</h3>
-                  <VenueManagerSwitch />
+                  <VenueManagerSwitch
+                    enabled={profile.venueManager}
+                    onChange={onToggleVenueManager}
+                    disabled={isUpdating}
+                  />
                 </div>
               </div>
               <div className="relative w-fit">

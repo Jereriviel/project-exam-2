@@ -1,19 +1,46 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useAuth } from "../hooks/useAuth";
-import type { Profile } from "../types/profile";
-import { getProfileById } from "../api/profile";
+import type { Profile, UpdateProfileRequest } from "../types/profile";
+import { getProfileById, updateProfile } from "../api/profile";
 import { ApiError } from "../error/ApiError";
 import ErrorModal from "../components/ui/ErrorModal";
 import Container from "../layouts/Container";
 import { Helmet } from "react-helmet-async";
 import ProfileHeader from "../components/features/profile/ProfileHeader";
+import { ShowSuccessToast, ShowFailToast } from "../components/ui/Toast/Toast";
 
 function ProfilePage() {
   const navigate = useNavigate();
   const [isModalClosed, setIsModalClosed] = useState(false);
   const { user, token, isLoading: isAuthLoading } = useAuth();
+  const queryClient = useQueryClient();
+
+  const updateProfileMutation = useMutation({
+    mutationFn: (data: UpdateProfileRequest) =>
+      updateProfile(user!.name, data, token),
+
+    onSuccess: (updatedProfile, variables) => {
+      queryClient.setQueryData(["profile", user?.name], updatedProfile);
+
+      if (variables.venueManager !== undefined) {
+        ShowSuccessToast(
+          variables.venueManager
+            ? "You are now a venue manager!"
+            : "You are now a customer.",
+        );
+      }
+    },
+
+    onError: (error) => {
+      if (error instanceof ApiError) {
+        ShowFailToast(error.message);
+      } else {
+        ShowFailToast("An unexpected error occurred.");
+      }
+    },
+  });
 
   const {
     data: profile,
@@ -65,6 +92,12 @@ function ProfilePage() {
     );
   }
 
+  const handleToggleVenueManager = () => {
+    updateProfileMutation.mutate({
+      venueManager: !profile.venueManager,
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -75,7 +108,11 @@ function ProfilePage() {
         />
       </Helmet>
 
-      <ProfileHeader profile={profile} />
+      <ProfileHeader
+        profile={profile}
+        onToggleVenueManager={handleToggleVenueManager}
+        isUpdating={updateProfileMutation.isPending}
+      />
 
       <ErrorModal
         isOpen={showModal}
