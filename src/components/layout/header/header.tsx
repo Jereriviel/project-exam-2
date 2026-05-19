@@ -15,7 +15,7 @@ const Header = () => {
   return (
     <>
       <header className="bg-secondary-light top-0 z-50 mt-0 w-full space-y-4 p-4 md:space-y-0 md:px-8">
-        <div className="mx-auto flex max-w-7xl items-center justify-between md:gap-12">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 md:gap-12">
           <Link to={"/"} aria-label="Home" className="shrink-0">
             <img
               src={logoPrimary}
