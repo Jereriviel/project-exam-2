@@ -1,12 +1,16 @@
+import { useState } from "react";
 import type { Profile } from "../../../types/profile";
 import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
 import VenueManagerSwitch from "./VenueManagerSwitch";
 import EditBio from "./EditBio";
+import EditAvatarModal from "./EditAvatarModal";
+import type { Media } from "../../../types/media";
 
 interface ProfileHeaderProps {
   profile: Profile;
   onToggleVenueManager: () => void;
   onUpdateBio: (bio: string) => void;
+  onUpdateAvatar: (avatar: Media) => void;
   isUpdating: boolean;
 }
 
@@ -14,8 +18,11 @@ const ProfileHeader = ({
   profile,
   onToggleVenueManager,
   onUpdateBio,
+  onUpdateAvatar,
   isUpdating,
 }: ProfileHeaderProps) => {
+  const [isAvatarModalOpen, setIsAvatarModalOpen] = useState(false);
+
   const profileImage = profile?.avatar;
   const profileImageSrc = profileImage?.url
     ? profileImage.url
@@ -40,10 +47,25 @@ const ProfileHeader = ({
                       avatarFallbackImg;
                   }}
                 />
-                <button className="btn-primary-round absolute right-0 bottom-0">
+                <button
+                  onClick={() => setIsAvatarModalOpen(true)}
+                  className="btn-primary-round absolute right-0 bottom-0"
+                >
                   <span className="iconify-[material-symbols--edit-outline] size-5"></span>
                 </button>
               </div>
+              <EditAvatarModal
+                isOpen={isAvatarModalOpen}
+                onClose={() => setIsAvatarModalOpen(false)}
+                profile={profile}
+                onSave={(data) =>
+                  onUpdateAvatar({
+                    url: data.url,
+                    alt: data.alt || "",
+                  })
+                }
+                isUpdating={isUpdating}
+              />
             </div>
             <div className="flex w-full flex-col gap-4 lg:gap-8 lg:self-end lg:text-lg">
               <div className="flex flex-col gap-4 lg:flex-row lg:gap-8">

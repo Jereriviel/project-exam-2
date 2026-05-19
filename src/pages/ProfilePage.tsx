@@ -10,6 +10,7 @@ import Container from "../layouts/Container";
 import { Helmet } from "react-helmet-async";
 import ProfileHeader from "../components/features/profile/ProfileHeader";
 import { ShowSuccessToast, ShowFailToast } from "../components/ui/Toast/Toast";
+import type { Media } from "../types/media";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -34,6 +35,10 @@ function ProfilePage() {
 
       if (variables.bio !== undefined) {
         ShowSuccessToast("Bio updated successfully!");
+      }
+
+      if (variables.avatar !== undefined) {
+        ShowSuccessToast("Profile image updated successfully!");
       }
     },
 
@@ -108,6 +113,12 @@ function ProfilePage() {
     });
   };
 
+  const handleUpdateAvatar = (avatar: Media) => {
+    updateProfileMutation.mutate({
+      avatar,
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -122,6 +133,7 @@ function ProfilePage() {
         profile={profile}
         onToggleVenueManager={handleToggleVenueManager}
         onUpdateBio={handleUpdateBio}
+        onUpdateAvatar={handleUpdateAvatar}
         isUpdating={updateProfileMutation.isPending}
       />
 

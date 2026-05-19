@@ -59,7 +59,7 @@ const EditBio = ({ profile, onSave, isUpdating }: EditBioProps) => {
         <Field>
           <Textarea
             label="About"
-            placeholder="Enter your email address"
+            placeholder="Tell us about you!"
             error={errors.bio?.message}
             {...register("bio")}
           ></Textarea>
