@@ -1,16 +1,19 @@
 import type { Profile } from "../../../types/profile";
 import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
 import VenueManagerSwitch from "./VenueManagerSwitch";
+import EditBio from "./EditBio";
 
 interface ProfileHeaderProps {
   profile: Profile;
   onToggleVenueManager: () => void;
+  onUpdateBio: (bio: string) => void;
   isUpdating: boolean;
 }
 
 const ProfileHeader = ({
   profile,
   onToggleVenueManager,
+  onUpdateBio,
   isUpdating,
 }: ProfileHeaderProps) => {
   const profileImage = profile?.avatar;
@@ -20,9 +23,9 @@ const ProfileHeader = ({
 
   return (
     <>
-      <section className="bg-secondary-light relative w-full overflow-hidden">
-        <div className="flex w-full flex-col gap-4 px-4 pt-8 pb-12 md:pb-16 lg:gap-8 lg:px-8 lg:pb-20">
-          <div className="flex flex-col items-start gap-8 lg:flex-row lg:gap-12">
+      <section className="bg-secondary-light relative flex w-full justify-center overflow-hidden px-4 sm:px-8">
+        <div className="flex w-full max-w-7xl flex-col gap-4 pt-8 pb-12 md:pb-16 lg:gap-8 lg:pb-20">
+          <div className="flex w-full flex-col items-start gap-8 lg:flex-row lg:gap-12">
             <div className="flex flex-col items-center gap-4">
               <h1 className="font-display truncate text-4xl font-bold lg:text-5xl">
                 {`Hello, ${profile.name}!`}
@@ -42,7 +45,7 @@ const ProfileHeader = ({
                 </button>
               </div>
             </div>
-            <div className="flex flex-col gap-4 lg:gap-8 lg:self-end lg:text-lg">
+            <div className="flex w-full flex-col gap-4 lg:gap-8 lg:self-end lg:text-lg">
               <div className="flex flex-col gap-4 lg:flex-row lg:gap-8">
                 <div className="flex flex-col">
                   <h3>Name</h3>
@@ -61,15 +64,11 @@ const ProfileHeader = ({
                   />
                 </div>
               </div>
-              <div className="relative w-fit">
-                <div className="flex flex-col">
-                  <h3>About</h3>
-                  <p>{profile.bio}</p>
-                </div>
-                <button className="btn-primary-round absolute -right-10 -bottom-1">
-                  <span className="iconify-[material-symbols--edit-outline] size-5"></span>
-                </button>
-              </div>
+              <EditBio
+                profile={profile}
+                onSave={onUpdateBio}
+                isUpdating={isUpdating}
+              />
             </div>
           </div>
         </div>

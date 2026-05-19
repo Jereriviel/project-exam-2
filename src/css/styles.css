@@ -74,6 +74,10 @@
     @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium w-full rounded-xl border-2 px-5 py-2 text-center font-medium transition duration-500 ease-in-out sm:w-fit;
   }
 
+  .btn-secondary-sm {
+    @apply bg-primary-ultra-light border-primary hover:border-primary-medium hover:bg-primary-light text-primary hover:text-primary-medium w-full rounded-xl border-2 px-5 py-2 text-center text-sm font-medium transition duration-500 ease-in-out sm:w-fit;
+  }
+
   .btn-delete {
     @apply bg-error-light border-error hover:bg-error text-error w-full rounded-xl border-2 px-5 py-3 text-center font-medium transition duration-500 ease-in-out hover:text-white sm:w-fit;
   }

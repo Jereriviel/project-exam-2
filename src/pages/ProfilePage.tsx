@@ -31,6 +31,10 @@ function ProfilePage() {
             : "You are now a customer.",
         );
       }
+
+      if (variables.bio !== undefined) {
+        ShowSuccessToast("Bio updated successfully!");
+      }
     },
 
     onError: (error) => {
@@ -98,6 +102,12 @@ function ProfilePage() {
     });
   };
 
+  const handleUpdateBio = (bio: string) => {
+    updateProfileMutation.mutate({
+      bio,
+    });
+  };
+
   return (
     <>
       <Helmet>
@@ -111,6 +121,7 @@ function ProfilePage() {
       <ProfileHeader
         profile={profile}
         onToggleVenueManager={handleToggleVenueManager}
+        onUpdateBio={handleUpdateBio}
         isUpdating={updateProfileMutation.isPending}
       />
 
