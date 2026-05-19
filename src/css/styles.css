@@ -63,7 +63,7 @@
   }
 
   .btn-primary-round {
-    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark flex size-8 items-center justify-center rounded-full text-center font-medium text-white transition duration-500 ease-in-out sm:size-10;
+    @apply bg-primary hover:bg-primary-medium active:bg-primary-dark flex size-8 items-center justify-center rounded-full text-center font-medium text-white transition duration-500 ease-in-out;
   }
 
   .btn-search {

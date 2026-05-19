@@ -8,6 +8,7 @@ import { ApiError } from "../error/ApiError";
 import ErrorModal from "../components/ui/ErrorModal";
 import Container from "../layouts/Container";
 import { Helmet } from "react-helmet-async";
+import ProfileHeader from "../components/features/profile/ProfileHeader";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -56,7 +57,7 @@ function ProfilePage() {
     );
   }
 
-  if (!profile && !isError) {
+  if (!profile) {
     return (
       <Container>
         <p className="py-4 font-semibold">Profile not found.</p>
@@ -74,9 +75,7 @@ function ProfilePage() {
         />
       </Helmet>
 
-      <Container>
-        <div>Welcome to the profile page</div>
-      </Container>
+      <ProfileHeader profile={profile} />
 
       <ErrorModal
         isOpen={showModal}
