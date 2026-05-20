@@ -11,6 +11,7 @@ import { Helmet } from "react-helmet-async";
 import ProfileHeader from "../components/features/profile/ProfileHeader";
 import { ShowSuccessToast, ShowFailToast } from "../components/ui/Toast/Toast";
 import type { Media } from "../types/media";
+import ProfileBookings from "../components/features/profile/ProfileBookings";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -136,6 +137,9 @@ function ProfilePage() {
         onUpdateAvatar={handleUpdateAvatar}
         isUpdating={updateProfileMutation.isPending}
       />
+      <Container>
+        <ProfileBookings bookings={profile.bookings || []} />
+      </Container>
 
       <ErrorModal
         isOpen={showModal}
