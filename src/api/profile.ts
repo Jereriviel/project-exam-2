@@ -11,7 +11,7 @@ export const getProfileById = async (
   id: string,
   token: string | null = null,
 ): Promise<Profile> => {
-  const endpoint = `/holidaze/profiles/${id}`;
+  const endpoint = `/holidaze/profiles/${id}?_bookings=true&_venues=true`;
   const response = await get<ProfileResponse>(endpoint, token);
 
   if (!response?.data) {
