@@ -3,7 +3,7 @@ import type { Profile } from "../../../types/profile";
 import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
 import VenueManagerSwitch from "./VenueManagerSwitch";
 import EditBio from "./EditBio";
-import EditAvatarModal from "./EditAvatarModal";
+import EditAvatarModal from "./modals/EditAvatarModal";
 import type { Media } from "../../../types/media";
 
 interface ProfileHeaderProps {

@@ -1,12 +1,12 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { avatarSchema, type AvatarRequest } from "./profile.schema";
-import Modal from "../../ui/Modal";
-import type { Profile } from "../../../types/profile";
-import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
+import { avatarSchema, type AvatarRequest } from "../profile.schema";
+import Modal from "../../../ui/Modal";
+import type { Profile } from "../../../../types/profile";
+import avatarFallbackImg from "../../../../../public/avatar-fallback-img.jpg";
 import { Field, Fieldset } from "@headlessui/react";
-import Input from "../../ui/Input";
-import LoadingSpinner from "../../ui/LoadingSpinner";
+import Input from "../../../ui/Input";
+import LoadingSpinner from "../../../ui/LoadingSpinner";
 
 interface EditAvatarModalProps {
   isOpen: boolean;
