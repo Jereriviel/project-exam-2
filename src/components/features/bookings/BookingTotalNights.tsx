@@ -18,7 +18,7 @@ const BookingTotalNights = ({
   );
 
   return (
-    <div className="font flex items-center justify-between font-semibold">
+    <div className="font flex w-full items-center justify-between font-semibold">
       <p>
         Total {nights} {nightLabel}:
       </p>

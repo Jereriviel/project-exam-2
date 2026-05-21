@@ -90,7 +90,7 @@ const EditBookingModal = ({
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={`Edit Booking`}>
-      <div className="flex w-fit flex-col gap-4 rounded-xl bg-white p-4 shadow-lg sm:p-8">
+      <div className="flex w-full flex-col items-center gap-4 rounded-xl">
         <BookingCalendar
           selected={dateRange}
           onDateChange={(range) => {
