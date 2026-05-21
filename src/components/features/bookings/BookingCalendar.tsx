@@ -21,6 +21,9 @@ export function BookingCalendar({
     onDateChange(range);
   };
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
   return (
     <div>
       <DayPicker
@@ -28,7 +31,13 @@ export function BookingCalendar({
         mode="range"
         selected={selected}
         onSelect={handleSelect}
-        disabled={disabledDates}
+        disabled={(date) => {
+          const isPast = date < today;
+          const isBlocked = (disabledDates ?? []).some(
+            (range) => date >= range.from && date <= range.to,
+          );
+          return isPast || isBlocked;
+        }}
         required={true}
         resetOnSelect={true}
         excludeDisabled={true}
