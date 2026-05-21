@@ -12,6 +12,8 @@ import LoadingSpinner from "../../../ui/LoadingSpinner";
 import { parseISO, startOfDay, format } from "date-fns";
 import { useMemo } from "react";
 import Modal from "../../../ui/Modal";
+import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import { useDeleteBooking } from "../../../../hooks/useDeleteBooking";
 
 interface EditBookingModalProps {
   booking?: Booking;
@@ -32,6 +34,10 @@ const EditBookingModal = ({
     from: booking?.dateFrom ? new Date(booking.dateFrom) : undefined,
     to: booking?.dateTo ? new Date(booking.dateTo) : undefined,
   });
+
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
+  const deleteBookingMutation = useDeleteBooking();
 
   const editBookingMutation = useEditBooking();
 
@@ -56,6 +62,30 @@ const EditBookingModal = ({
 
   const isBookingDisabled =
     !dateRange.from || !dateRange.to || editBookingMutation.isPending;
+
+  const handleDeleteBooking = () => {
+    if (!token) {
+      ShowFailToast("You must be logged in");
+      return;
+    }
+
+    deleteBookingMutation.mutate(
+      {
+        id: booking.id,
+        token,
+      },
+      {
+        onSuccess: () => {
+          ShowSuccessToast("Booking deleted successfully");
+          setIsDeleteModalOpen(false);
+          onClose();
+        },
+        onError: (error) => {
+          ShowFailToast(`Delete failed: ${error.message}`);
+        },
+      },
+    );
+  };
 
   const handleSaveChanges = async () => {
     if (!token) {
@@ -89,37 +119,60 @@ const EditBookingModal = ({
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={`Edit Booking`}>
-      <div className="flex w-full flex-col items-center gap-4 rounded-xl">
-        <BookingCalendar
-          selected={dateRange}
-          onDateChange={(range) => {
-            if (range) {
-              setDateRange(range);
-            }
-          }}
-          disabledDates={blockedDates}
-          month={month}
-          onMonthChange={setMonth}
-        />
-        <GuestSelector
-          guests={selectedGuests}
-          maxGuests={venue?.maxGuests}
-          onChange={(count) => setSelectedGuests(count)}
-        />
-        <BookingTotalNights
-          dateRange={dateRange}
-          pricePerNight={venue?.price}
-        />
-        <button
-          className="btn-primary flex h-12 min-w-full items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
-          onClick={handleSaveChanges}
-          disabled={isBookingDisabled}
-        >
-          {editBookingMutation.isPending ? <LoadingSpinner /> : "Save Changes"}
-        </button>
-      </div>
-    </Modal>
+    <>
+      <Modal isOpen={isOpen} onClose={onClose} title={`Edit Booking`}>
+        <div className="flex w-full flex-col items-center gap-4 rounded-xl">
+          <BookingCalendar
+            selected={dateRange}
+            onDateChange={(range) => {
+              if (range) {
+                setDateRange(range);
+              }
+            }}
+            disabledDates={blockedDates}
+            month={month}
+            onMonthChange={setMonth}
+          />
+          <GuestSelector
+            guests={selectedGuests}
+            maxGuests={venue?.maxGuests}
+            onChange={(count) => setSelectedGuests(count)}
+          />
+          <BookingTotalNights
+            dateRange={dateRange}
+            pricePerNight={venue?.price}
+          />
+          <div className="flex w-full flex-col gap-4">
+            <button
+              className="btn-delete flex h-12 min-w-full items-center justify-center"
+              onClick={() => setIsDeleteModalOpen(true)}
+            >
+              Delete Booking
+            </button>
+            <button
+              className="btn-primary flex h-12 min-w-full items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
+              onClick={handleSaveChanges}
+              disabled={isBookingDisabled}
+            >
+              {editBookingMutation.isPending ? (
+                <LoadingSpinner />
+              ) : (
+                "Save Changes"
+              )}
+            </button>
+          </div>
+        </div>
+      </Modal>
+      <ConfirmDeleteModal
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onConfirm={handleDeleteBooking}
+        isLoading={deleteBookingMutation.isPending}
+        title="Delete Booking?"
+        message="Are you sure you want to delete this booking?"
+        confirmText="Yes, Delete Booking"
+      />
+    </>
   );
 };
 
