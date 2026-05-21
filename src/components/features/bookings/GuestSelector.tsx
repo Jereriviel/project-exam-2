@@ -6,7 +6,7 @@ interface GuestSelectorProps {
 
 const GuestSelector = ({ guests, maxGuests, onChange }: GuestSelectorProps) => {
   return (
-    <div className="flex items-center justify-between font-semibold">
+    <div className="flex w-full items-center justify-between font-semibold">
       <p>Guests:</p>
       <div className="flex items-center gap-4">
         <button

@@ -10,15 +10,15 @@ import type {
 export const getProfileById = async (
   id: string,
   token: string | null = null,
-): Promise<ProfileResponse> => {
-  const endpoint = `/holidaze/profiles/${id}`;
-  const data = await get<ProfileResponse>(endpoint, token);
+): Promise<Profile> => {
+  const endpoint = `/holidaze/profiles/${id}?_bookings=true&_venues=true`;
+  const response = await get<ProfileResponse>(endpoint, token);
 
-  if (!data) {
+  if (!response?.data) {
     throw new Error("No data received from server");
   }
 
-  return data;
+  return response.data;
 };
 
 export const updateProfile = async (

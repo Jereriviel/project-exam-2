@@ -24,10 +24,10 @@ const HeaderProfile = ({ profile }: HeaderProfileProps) => {
   };
 
   return (
-    <div className="flex shrink-0 items-center gap-4 font-medium">
-      <p className="text-sm md:text-base">{`Welcome, ${profile?.name || "Unknown"}!`}</p>
+    <div className="flex items-center gap-4 font-medium sm:shrink-0">
+      <p className="truncate text-sm md:text-base">{`Welcome, ${profile?.name || "Unknown"}!`}</p>
       <Menu>
-        <MenuButton className="rounded-full">
+        <MenuButton className="shrink-0 rounded-full">
           <img
             className="size-10 rounded-full object-cover md:size-12"
             src={profileImageSrc}
@@ -43,7 +43,7 @@ const HeaderProfile = ({ profile }: HeaderProfileProps) => {
         >
           <MenuItem>
             <Link
-              to={"/profile"}
+              to="/profile"
               aria-label="Profile"
               className="data-focus:bg-primary-ultra-light flex items-center gap-2 p-4"
             >
