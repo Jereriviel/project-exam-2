@@ -6,12 +6,16 @@ interface BookingCalendarProps {
   selected: DateRange;
   onDateChange: (range: DateRange | undefined) => void;
   disabledDates?: { from: Date; to: Date }[];
+  month?: Date;
+  onMonthChange?: (month: Date) => void;
 }
 
 export function BookingCalendar({
   selected,
   onDateChange,
   disabledDates,
+  month,
+  onMonthChange,
 }: BookingCalendarProps) {
   const handleSelect = (range: DateRange | undefined) => {
     onDateChange(range);
@@ -29,6 +33,8 @@ export function BookingCalendar({
         resetOnSelect={true}
         excludeDisabled={true}
         showOutsideDays={true}
+        month={month}
+        onMonthChange={onMonthChange}
       />
       {selected?.from ? (
         <div className="flex gap-2 pt-4 pb-2 font-medium">

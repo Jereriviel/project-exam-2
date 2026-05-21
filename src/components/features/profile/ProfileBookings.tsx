@@ -1,12 +1,19 @@
+import { useState } from "react";
 import type { ProfileBooking } from "../../../types/profile";
 import ProfileCard from "./cards/ProfileCard";
 import BookingCardInfo from "./cards/BookingCardInfo";
+import EditBookingModal from "./modals/EditBookingModal";
 
 interface ProfileBookingsProps {
   bookings: ProfileBooking[];
 }
 
 const ProfileBookings = ({ bookings }: ProfileBookingsProps) => {
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [selectedBooking, setSelectedBooking] = useState<ProfileBooking | null>(
+    null,
+  );
+
   if (bookings.length === 0) {
     return (
       <section>
@@ -31,12 +38,24 @@ const ProfileBookings = ({ bookings }: ProfileBookingsProps) => {
               imageUrl={venue.media[0]?.url}
               imageAlt={venue.media[0]?.alt}
               link={`/venue/${venue.id}`}
+              actionLabel="Make Changes"
+              onAction={() => {
+                setSelectedBooking(booking);
+                setIsEditModalOpen(true);
+              }}
             >
               <BookingCardInfo booking={booking} />
             </ProfileCard>
           );
         })}
       </div>
+      <EditBookingModal
+        key={selectedBooking?.id}
+        booking={selectedBooking ?? undefined}
+        venue={selectedBooking?.venue}
+        isOpen={isEditModalOpen}
+        onClose={() => setIsEditModalOpen(false)}
+      />
     </section>
   );
 };
