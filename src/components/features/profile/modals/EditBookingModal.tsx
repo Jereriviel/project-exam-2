@@ -9,7 +9,7 @@ import { useAuth } from "../../../../hooks/useAuth";
 import { useEditBooking } from "../../../../hooks/useEditBooking";
 import { ShowSuccessToast, ShowFailToast } from "../../../ui/Toast/Toast";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import { parseISO, startOfDay, format } from "date-fns";
+import { parseISO, startOfDay, format, addDays } from "date-fns";
 import { useMemo } from "react";
 import Modal from "../../../ui/Modal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
@@ -53,6 +53,8 @@ const EditBookingModal = ({
         })) ?? []
     );
   }, [venue?.bookings, booking?.id]);
+
+  const tomorrow = addDays(startOfDay(new Date()), 1);
 
   const [month, setMonth] = useState<Date>(() => {
     return booking?.dateFrom ? new Date(booking.dateFrom) : new Date();
@@ -152,6 +154,7 @@ const EditBookingModal = ({
             disabledDates={blockedDates}
             month={month}
             onMonthChange={setMonth}
+            minDate={tomorrow}
           />
           <GuestSelector
             guests={selectedGuests}
