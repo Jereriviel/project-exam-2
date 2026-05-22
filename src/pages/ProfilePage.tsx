@@ -13,6 +13,8 @@ import { ShowSuccessToast, ShowFailToast } from "../components/ui/Toast/Toast";
 import type { Media } from "../types/media";
 import ProfileBookings from "../components/features/profile/ProfileBookings";
 import ProfileVenues from "../components/features/profile/ProfileVenues";
+import ProfileHeaderSkeleton from "../components/features/profile/loading-skeletons/ProfileHeaderSkeleton";
+import ProfileCardSkeleton from "../components/features/profile/loading-skeletons/ProfileCardSkeleton";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -53,14 +55,29 @@ function ProfilePage() {
     },
   });
 
+  // const {
+  //   data: profile,
+  //   isLoading,
+  //   isError,
+  //   error,
+  // } = useQuery<Profile>({
+  //   queryKey: ["profile", user?.name],
+  //   queryFn: () => getProfileById(user!.name, token!),
+  //   enabled: !!user && !!token && !isAuthLoading,
+  // });
+
   const {
     data: profile,
     isLoading,
     isError,
     error,
   } = useQuery<Profile>({
-    queryKey: ["profile", user?.name],
-    queryFn: () => getProfileById(user!.name, token!),
+    queryKey: ["profile-dev", user?.name],
+    queryFn: async () => {
+      await new Promise((resolve) => setTimeout(resolve, 90000));
+
+      return getProfileById(user!.name, token!);
+    },
     enabled: !!user && !!token && !isAuthLoading,
   });
 
@@ -87,11 +104,15 @@ function ProfilePage() {
 
   if (isLoading) {
     return (
-      <Container>
-        <div className="pt-4">
-          <div className="fade-in">ProfilePageSkeleton</div>
-        </div>
-      </Container>
+      <>
+        <ProfileHeaderSkeleton />
+        <Container>
+          <div className="flex flex-col gap-12 pb-12">
+            <ProfileCardSkeleton />
+            <ProfileCardSkeleton />
+          </div>
+        </Container>
+      </>
     );
   }
 
