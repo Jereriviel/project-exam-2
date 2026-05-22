@@ -58,6 +58,17 @@ const EditBookingModal = ({
     return booking?.dateFrom ? new Date(booking.dateFrom) : new Date();
   });
 
+  const resetFormState = () => {
+    setSelectedGuests(booking?.guests ?? 1);
+
+    setDateRange({
+      from: booking?.dateFrom ? parseISO(booking.dateFrom) : undefined,
+      to: booking?.dateTo ? parseISO(booking.dateTo) : undefined,
+    });
+
+    setMonth(booking?.dateFrom ? parseISO(booking.dateFrom) : new Date());
+  };
+
   if (!booking || !venue) return null;
 
   const isBookingDisabled =
@@ -78,6 +89,7 @@ const EditBookingModal = ({
         onSuccess: () => {
           ShowSuccessToast("Booking deleted successfully");
           setIsDeleteModalOpen(false);
+          resetFormState();
           onClose();
         },
         onError: (error) => {
@@ -109,6 +121,7 @@ const EditBookingModal = ({
       {
         onSuccess: () => {
           ShowSuccessToast("Booking updated successfully");
+          resetFormState();
           onClose();
         },
         onError: (error) => {
@@ -120,7 +133,14 @@ const EditBookingModal = ({
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} title={`Edit Booking`}>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => {
+          resetFormState();
+          onClose();
+        }}
+        title={`Edit Booking`}
+      >
         <div className="flex w-full flex-col items-center gap-4 rounded-xl">
           <BookingCalendar
             selected={dateRange}
