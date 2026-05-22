@@ -55,29 +55,14 @@ function ProfilePage() {
     },
   });
 
-  // const {
-  //   data: profile,
-  //   isLoading,
-  //   isError,
-  //   error,
-  // } = useQuery<Profile>({
-  //   queryKey: ["profile", user?.name],
-  //   queryFn: () => getProfileById(user!.name, token!),
-  //   enabled: !!user && !!token && !isAuthLoading,
-  // });
-
   const {
     data: profile,
     isLoading,
     isError,
     error,
   } = useQuery<Profile>({
-    queryKey: ["profile-dev", user?.name],
-    queryFn: async () => {
-      await new Promise((resolve) => setTimeout(resolve, 90000));
-
-      return getProfileById(user!.name, token!);
-    },
+    queryKey: ["profile", user?.name],
+    queryFn: () => getProfileById(user!.name, token!),
     enabled: !!user && !!token && !isAuthLoading,
   });
 
