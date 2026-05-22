@@ -12,16 +12,40 @@ const ProfileVenues = ({ venues }: ProfileVenuesProps) => {
 
   if (venues.length === 0) {
     return (
-      <section>
-        <h2 className="text-2xl lg:text-3xl">Venues</h2>
-        <p>No venues yet.</p>
+      <section className="flex flex-col gap-4 lg:gap-6">
+        <h2 className="text-2xl lg:text-3xl">Your Venues</h2>
+        <div className="flex flex-col gap-4 sm:flex-row">
+          <div className="flex w-full justify-center sm:w-fit">
+            <div className="bg-primary-light flex size-16 items-center justify-center rounded-full">
+              <span className="iconify-[material-symbols--house] text-primary size-8"></span>
+            </div>
+          </div>
+          <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-2">
+              <h3 className="w-full text-center text-lg sm:text-start">
+                No venues yet
+              </h3>
+              <p>
+                Have venue you would like to rent out? Follow these easy steps
+                to get started!
+              </p>
+            </div>
+            <button
+              type="button"
+              className="btn-primary flex items-center justify-center gap-2"
+            >
+              <span className="iconify-[ic--outline-plus] size-6 text-white"></span>
+              <span>Add new venue</span>
+            </button>
+          </div>
+        </div>
       </section>
     );
   }
 
   return (
     <section className="flex flex-col gap-4 lg:gap-6">
-      <h2 className="text-2xl lg:text-3xl">Venues</h2>
+      <h2 className="text-2xl lg:text-3xl">Your Venues</h2>
 
       <div className="flex flex-wrap gap-6 md:grid md:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-2">
         {venues.map((venues) => {
