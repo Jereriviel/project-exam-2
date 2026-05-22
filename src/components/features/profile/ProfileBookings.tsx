@@ -17,7 +17,7 @@ const ProfileBookings = ({ bookings }: ProfileBookingsProps) => {
   if (bookings.length === 0) {
     return (
       <section>
-        <h2>Bookings</h2>
+        <h2 className="text-2xl lg:text-3xl">Bookings</h2>
         <p>No bookings yet.</p>
       </section>
     );

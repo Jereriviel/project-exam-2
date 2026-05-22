@@ -12,6 +12,7 @@ import ProfileHeader from "../components/features/profile/ProfileHeader";
 import { ShowSuccessToast, ShowFailToast } from "../components/ui/Toast/Toast";
 import type { Media } from "../types/media";
 import ProfileBookings from "../components/features/profile/ProfileBookings";
+import ProfileVenues from "../components/features/profile/ProfileVenues";
 
 function ProfilePage() {
   const navigate = useNavigate();
@@ -138,7 +139,10 @@ function ProfilePage() {
         isUpdating={updateProfileMutation.isPending}
       />
       <Container>
-        <ProfileBookings bookings={profile.bookings || []} />
+        <div className="flex flex-col gap-12 pb-12">
+          <ProfileBookings bookings={profile.bookings || []} />
+          <ProfileVenues venues={profile.venues || []} />
+        </div>
       </Container>
 
       <ErrorModal
