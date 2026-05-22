@@ -33,7 +33,7 @@ const ProfileHeader = ({
       <section className="bg-secondary-light relative flex w-full justify-center overflow-hidden px-4 sm:px-8">
         <div className="flex w-full max-w-7xl flex-col gap-4 pt-8 pb-12 md:pb-16 lg:gap-8 lg:pb-20">
           <div className="flex w-full flex-col items-start gap-8 lg:flex-row lg:gap-12">
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex w-full flex-col items-center justify-center gap-4 lg:w-fit lg:justify-start">
               <h1 className="font-display truncate text-4xl font-bold lg:text-5xl">
                 {`Hello, ${profile.name}!`}
               </h1>
