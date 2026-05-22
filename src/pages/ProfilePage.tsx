@@ -147,7 +147,9 @@ function ProfilePage() {
       <Container>
         <div className="flex flex-col gap-12 pb-12">
           <ProfileBookings bookings={profile.bookings || []} />
-          <ProfileVenues venues={profile.venues || []} />
+          {profile.venueManager && (
+            <ProfileVenues venues={profile.venues || []} />
+          )}
         </div>
       </Container>
 
