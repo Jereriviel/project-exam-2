@@ -9,7 +9,7 @@ import { useAuth } from "../../../../hooks/useAuth";
 import { useEditBooking } from "../../../../hooks/useEditBooking";
 import { ShowSuccessToast, ShowFailToast } from "../../../ui/Toast/Toast";
 import LoadingSpinner from "../../../ui/LoadingSpinner";
-import { parseISO, startOfDay, format } from "date-fns";
+import { parseISO, startOfDay, format, addDays } from "date-fns";
 import { useMemo } from "react";
 import Modal from "../../../ui/Modal";
 import ConfirmDeleteModal from "./ConfirmDeleteModal";
@@ -54,9 +54,22 @@ const EditBookingModal = ({
     );
   }, [venue?.bookings, booking?.id]);
 
+  const tomorrow = addDays(startOfDay(new Date()), 1);
+
   const [month, setMonth] = useState<Date>(() => {
     return booking?.dateFrom ? new Date(booking.dateFrom) : new Date();
   });
+
+  const resetFormState = () => {
+    setSelectedGuests(booking?.guests ?? 1);
+
+    setDateRange({
+      from: booking?.dateFrom ? parseISO(booking.dateFrom) : undefined,
+      to: booking?.dateTo ? parseISO(booking.dateTo) : undefined,
+    });
+
+    setMonth(booking?.dateFrom ? parseISO(booking.dateFrom) : new Date());
+  };
 
   if (!booking || !venue) return null;
 
@@ -78,6 +91,7 @@ const EditBookingModal = ({
         onSuccess: () => {
           ShowSuccessToast("Booking deleted successfully");
           setIsDeleteModalOpen(false);
+          resetFormState();
           onClose();
         },
         onError: (error) => {
@@ -109,6 +123,7 @@ const EditBookingModal = ({
       {
         onSuccess: () => {
           ShowSuccessToast("Booking updated successfully");
+          resetFormState();
           onClose();
         },
         onError: (error) => {
@@ -120,7 +135,14 @@ const EditBookingModal = ({
 
   return (
     <>
-      <Modal isOpen={isOpen} onClose={onClose} title={`Edit Booking`}>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => {
+          resetFormState();
+          onClose();
+        }}
+        title={`Edit Booking`}
+      >
         <div className="flex w-full flex-col items-center gap-4 rounded-xl">
           <BookingCalendar
             selected={dateRange}
@@ -132,6 +154,7 @@ const EditBookingModal = ({
             disabledDates={blockedDates}
             month={month}
             onMonthChange={setMonth}
+            minDate={tomorrow}
           />
           <GuestSelector
             guests={selectedGuests}

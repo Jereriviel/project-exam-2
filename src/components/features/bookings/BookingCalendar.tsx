@@ -1,4 +1,5 @@
 import { DayPicker, type DateRange } from "react-day-picker";
+import { startOfDay } from "date-fns";
 import "react-day-picker/style.css";
 import "./booking-calendar.css";
 
@@ -8,6 +9,7 @@ interface BookingCalendarProps {
   disabledDates?: { from: Date; to: Date }[];
   month?: Date;
   onMonthChange?: (month: Date) => void;
+  minDate?: Date;
 }
 
 export function BookingCalendar({
@@ -16,13 +18,12 @@ export function BookingCalendar({
   disabledDates,
   month,
   onMonthChange,
+  minDate,
 }: BookingCalendarProps) {
   const handleSelect = (range: DateRange | undefined) => {
     onDateChange(range);
   };
-
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+  const minimumDate = minDate ?? startOfDay(new Date());
 
   return (
     <div>
@@ -32,7 +33,7 @@ export function BookingCalendar({
         selected={selected}
         onSelect={handleSelect}
         disabled={(date) => {
-          const isPast = date < today;
+          const isPast = startOfDay(date) < minimumDate;
           const isBlocked = (disabledDates ?? []).some(
             (range) => date >= range.from && date <= range.to,
           );
