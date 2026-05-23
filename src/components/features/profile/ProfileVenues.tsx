@@ -3,14 +3,17 @@ import type { ProfileVenueSummary } from "../../../types/profile";
 import ProfileCard from "./cards/ProfileCard";
 import VenueCardInfo from "./cards/VenueCardInfo";
 import CreateVenueModal from "./modals/CreateVenueModal";
+import EditVenueModal from "./modals/EditVenueModal";
 
 interface ProfileVenuesProps {
   venues: ProfileVenueSummary[];
 }
 
 const ProfileVenues = ({ venues }: ProfileVenuesProps) => {
-  useState<ProfileVenueSummary | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedVenue, setSelectedVenue] =
+    useState<ProfileVenueSummary | null>(null);
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   if (venues.length === 0) {
     return (
@@ -35,7 +38,7 @@ const ProfileVenues = ({ venues }: ProfileVenuesProps) => {
             <button
               type="button"
               className="btn-primary flex items-center justify-center gap-2"
-              onClick={() => setIsModalOpen(true)}
+              onClick={() => setIsCreateModalOpen(true)}
             >
               <span className="iconify-[ic--outline-plus] size-6 text-white"></span>
               <span>Add new venue</span>
@@ -62,8 +65,11 @@ const ProfileVenues = ({ venues }: ProfileVenuesProps) => {
                 imageUrl={venue.media[0]?.url}
                 imageAlt={venue.media[0]?.alt}
                 link={`/venue/${venue.id}`}
-                actionLabel="Edit venue"
-                onAction={() => {}}
+                actionLabel="Edit Venue"
+                onAction={() => {
+                  setSelectedVenue(venue);
+                  setIsEditModalOpen(true);
+                }}
               >
                 <VenueCardInfo venue={venue} />
               </ProfileCard>
@@ -73,16 +79,23 @@ const ProfileVenues = ({ venues }: ProfileVenuesProps) => {
         <button
           type="button"
           className="btn-primary flex items-center justify-center gap-2"
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setIsCreateModalOpen(true)}
         >
           <span className="iconify-[ic--outline-plus] size-6 text-white"></span>
           <span>Add new venue</span>
         </button>
       </section>
       <CreateVenueModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        isOpen={isCreateModalOpen}
+        onClose={() => setIsCreateModalOpen(false)}
       />
+      {selectedVenue && (
+        <EditVenueModal
+          isOpen={isEditModalOpen}
+          onClose={() => setIsEditModalOpen(false)}
+          venue={selectedVenue}
+        />
+      )}
     </>
   );
 };
