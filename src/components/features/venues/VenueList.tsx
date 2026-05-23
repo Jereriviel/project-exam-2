@@ -15,9 +15,8 @@ const VenueList = ({ searchTerm }: VenueListProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPage = Number(searchParams.get("page")) || 1;
   const limit = 12;
-  const sortField = searchParams.get("sort") || undefined;
-  const sortOrder =
-    (searchParams.get("sortOrder") as "asc" | "desc") || undefined;
+  const sortField = searchParams.get("sort") || "created";
+  const sortOrder = (searchParams.get("sortOrder") as "asc" | "desc") || "desc";
 
   useEffect(() => {
     window.scrollTo({
@@ -37,7 +36,7 @@ const VenueList = ({ searchTerm }: VenueListProps) => {
 
   const handleSortChange = (value: string) => {
     if (value === "all-venues") {
-      updateParams({ page: "1", sort: "", sortOrder: "" });
+      updateParams({ page: "1", sort: "created", sortOrder: "desc" });
     } else {
       const [field, order] = value.split("-");
       updateParams({ page: "1", sort: field, sortOrder: order });
@@ -51,9 +50,7 @@ const VenueList = ({ searchTerm }: VenueListProps) => {
     error,
   } = useVenues(searchTerm, currentPage, limit, sortField, sortOrder);
 
-  const currentSortValue = sortField
-    ? `${sortField}-${sortOrder}`
-    : "all-venues";
+  const currentSortValue = `${sortField}-${sortOrder}`;
 
   if (isError) {
     return (

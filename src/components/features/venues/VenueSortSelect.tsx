@@ -11,7 +11,7 @@ type VenueSortSelectProps = {
 };
 
 const SORT_OPTIONS = [
-  { label: "All Venues", value: "all-venues" },
+  { label: "All Venues", value: "created-desc" },
   { label: "Highest Rated", value: "rating-desc" },
   { label: "Lowest Rated", value: "rating-asc" },
   { label: "Lowest Price", value: "price-asc" },
