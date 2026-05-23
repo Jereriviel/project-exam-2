@@ -204,7 +204,7 @@ const CreateVenueModal = ({ isOpen, onClose }: CreateVenueModalProps) => {
                 Cancel
               </button>
               <button
-                className="btn-primary flex h-12 items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
+                className="btn-primary flex h-12 min-w-35 items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
                 type="submit"
                 disabled={isSubmitting}
               >

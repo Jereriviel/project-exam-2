@@ -9,18 +9,15 @@ interface CheckboxProps {
 }
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  ({ iconClass, amenityName, name, checked, onChange }, ref) => {
+  ({ iconClass, amenityName, ...props }, ref) => {
     return (
       <label className="flex cursor-pointer items-center gap-2">
         <input
           type="checkbox"
-          checked={checked}
-          onChange={onChange}
-          name={name}
           ref={ref}
+          {...props}
           className="accent-primary-light size-4 rounded border"
         />
-
         <span className={iconClass}></span>
         <span>{amenityName}</span>
       </label>

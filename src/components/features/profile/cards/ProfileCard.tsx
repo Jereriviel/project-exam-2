@@ -33,7 +33,12 @@ const ProfileCard = ({
       <div className="bg-secondary-light flex flex-col gap-4 rounded-t-none rounded-b-xl p-4 xl:rounded-s-none xl:rounded-e-xl">
         <h3 className="truncate lg:text-xl">{title}</h3>
         {children}
-        <button type="button" className="btn-primary-sm" onClick={onAction}>
+        <button
+          type="button"
+          className="btn-primary-sm flex items-center justify-center gap-2"
+          onClick={onAction}
+        >
+          <span className="iconify-[material-symbols--edit-outline]"></span>
           {actionLabel}
         </button>
       </div>

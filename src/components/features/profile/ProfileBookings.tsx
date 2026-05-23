@@ -59,7 +59,7 @@ const ProfileBookings = ({ bookings }: ProfileBookingsProps) => {
               imageUrl={venue.media[0]?.url}
               imageAlt={venue.media[0]?.alt}
               link={`/venue/${venue.id}`}
-              actionLabel="Make Changes"
+              actionLabel="Edit Booking"
               onAction={() => {
                 setSelectedBooking(booking);
                 setIsEditModalOpen(true);
