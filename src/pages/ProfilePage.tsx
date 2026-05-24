@@ -27,7 +27,17 @@ function ProfilePage() {
       updateProfile(user!.name, data, token),
 
     onSuccess: (updatedProfile, variables) => {
-      queryClient.setQueryData(["profile", user?.name], updatedProfile);
+      queryClient.setQueryData(
+        ["profile", user?.name],
+        (oldProfile: Profile | undefined) => {
+          if (!oldProfile) return updatedProfile;
+
+          return {
+            ...oldProfile,
+            ...updatedProfile,
+          };
+        },
+      );
 
       if (variables.venueManager !== undefined) {
         ShowSuccessToast(
