@@ -41,6 +41,7 @@ Develop a modern frontend for the accommodation booking application "Holidaze". 
 - Tailwind CSS
 - Vite
 - React Router
+- React Helmet
 
 ## UI & UX Libraries
 
