@@ -3,7 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { useQuery, useQueryClient, useMutation } from "@tanstack/react-query";
 import { useAuth } from "../hooks/useAuth";
 import type { Profile, UpdateProfileRequest } from "../types/profile";
-import { getProfileById, updateProfile } from "../api/profile";
+import {
+  getProfileById,
+  updateProfile,
+  getVenuesByProfile,
+} from "../api/profile";
 import { ApiError } from "../error/ApiError";
 import ErrorModal from "../components/ui/ErrorModal";
 import Container from "../layouts/Container";
@@ -76,6 +80,12 @@ function ProfilePage() {
     enabled: !!user && !!token && !isAuthLoading,
   });
 
+  const { data: profileVenues } = useQuery({
+    queryKey: ["profileVenues", user?.name],
+    queryFn: () => getVenuesByProfile(user!.name, token!),
+    enabled: !!user,
+  });
+
   useEffect(() => {
     if (isError && error instanceof ApiError && error.statusCode === 404) {
       navigate("/404");
@@ -137,6 +147,8 @@ function ProfilePage() {
     });
   };
 
+  console.log(profileVenues);
+
   return (
     <>
       <Helmet>
@@ -158,7 +170,7 @@ function ProfilePage() {
         <div className="flex flex-col gap-12 pb-12">
           <ProfileBookings bookings={profile.bookings || []} />
           {profile.venueManager && (
-            <ProfileVenues venues={profile.venues || []} />
+            <ProfileVenues venues={profileVenues?.data || []} />
           )}
         </div>
       </Container>

@@ -49,9 +49,10 @@ export const getBookingsByProfile = async (
 
 export const getVenuesByProfile = async (
   id: string,
+  token: string | null = null,
 ): Promise<ProfileVenuesResponse> => {
-  const endpoint = `/holidaze/profiles/${id}/venues`;
-  const data = await get<ProfileVenuesResponse>(endpoint);
+  const endpoint = `/holidaze/profiles/${id}/venues?_bookings=true`;
+  const data = await get<ProfileVenuesResponse>(endpoint, token);
 
   if (!data) {
     throw new Error("No data received from server");
