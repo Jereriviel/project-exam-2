@@ -147,8 +147,6 @@ function ProfilePage() {
     });
   };
 
-  console.log(profileVenues);
-
   return (
     <>
       <Helmet>

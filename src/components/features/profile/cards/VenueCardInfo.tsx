@@ -1,15 +1,15 @@
 import type { Venue } from "../../../../types/venue";
 import { pluralize } from "../../../../utils/pluralize";
 import { Link } from "react-router-dom";
+import { filterUpcomingBookings } from "../../../../utils/filterUpcomingBookings";
 
 interface VenueCardInfoProps {
   venue: Venue;
 }
 
 const VenueCardInfo = ({ venue }: VenueCardInfoProps) => {
-  const upcomingBookings =
-    venue.bookings?.filter((booking) => new Date(booking.dateTo) >= new Date())
-      .length || 0;
+  const upcomingBookings = filterUpcomingBookings(venue.bookings);
+  const bookingCount = upcomingBookings.length;
 
   return (
     <ul>
@@ -23,10 +23,7 @@ const VenueCardInfo = ({ venue }: VenueCardInfoProps) => {
           className="hover:text-primary flex items-center gap-4 transition duration-500 ease-in-out"
         >
           <span className="iconify-[material-symbols--calendar-month]"></span>
-          {`${upcomingBookings} upcoming ${pluralize(
-            upcomingBookings,
-            "booking",
-          )}`}
+          {`${bookingCount} upcoming ${pluralize(bookingCount, "booking")}`}
         </Link>
       </li>
       <li className="flex items-center gap-4">

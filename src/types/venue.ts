@@ -16,6 +16,9 @@ export interface Venue {
   location: VenueLocation;
   owner?: Profile;
   bookings?: Booking[];
+  _count?: {
+    bookings: number;
+  };
 }
 
 export interface VenueMeta {

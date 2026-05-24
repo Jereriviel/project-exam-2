@@ -1,5 +1,6 @@
 import type { Media } from "./media";
 import type { VenueMeta, VenueLocation } from "./venue";
+import type { Booking } from "./booking";
 
 export interface Profile {
   name: string;
@@ -37,6 +38,7 @@ export interface ProfileVenueSummary {
   updated: string;
   meta: VenueMeta;
   location: VenueLocation;
+  bookings?: Booking[];
 }
 
 export interface ProfileVenuesResponse {
