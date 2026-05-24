@@ -1,7 +1,7 @@
 import AmenityTagList from "./AmenityTagList";
 import type { Venue } from "../../../types/venue";
-import fallbackImg from "../../../../public/fallback-img.jpg";
-import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
+import fallbackImg from "../../../assets/fallback-img.jpg";
+import avatarFallbackImg from "../../../assets/avatar-fallback-img.jpg";
 import Rating from "./Rating";
 import BookingCalendarCard from "../bookings/BookingCalendarCard";
 import { useAuth } from "../../../hooks/useAuth";

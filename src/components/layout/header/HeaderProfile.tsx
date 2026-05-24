@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import type { Profile } from "../../../types/profile";
-import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
+import avatarFallbackImg from "../../../assets/avatar-fallback-img.jpg";
 
 interface HeaderProfileProps {
   profile: Profile;

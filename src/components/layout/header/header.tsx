@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logoPrimary from "../../../../public/holidaze_logo_primary.svg";
+import logoPrimary from "../../../assets/holidaze_logo_primary.png";
 import SearchBar from "../../features/search/SearchBar";
 import { useAuth } from "../../../hooks/useAuth";
 import { useProfile } from "../../../hooks/useProfile";
@@ -20,7 +20,7 @@ const Header = () => {
             <img
               src={logoPrimary}
               alt="Holidaze logo"
-              className="h-8 w-25 object-cover md:h-12 md:w-40"
+              className="w-25 object-cover md:w-40"
             />
           </Link>
           <div className="hidden w-full justify-center md:flex">

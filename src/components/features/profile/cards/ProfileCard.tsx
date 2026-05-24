@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { Link } from "react-router-dom";
-import fallbackImg from "../../../../../public/fallback-img.jpg";
+import fallbackImg from "../../../../assets/fallback-img.jpg";
 
 interface ProfileCardProps {
   title: string;

@@ -1,7 +1,7 @@
 import type { Venue } from "../../../types/venue";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
-import fallbackImg from "../../../../public/fallback-img.jpg";
+import fallbackImg from "../../../assets/fallback-img.jpg";
 
 type VenueCardProps = {
   venue: Venue;

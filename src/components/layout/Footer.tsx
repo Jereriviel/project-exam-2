@@ -1,4 +1,4 @@
-import logoWhite from "../../../public/holidaze_logo_white.svg";
+import logoWhite from "../../assets/holidaze_logo_white.png";
 
 const Footer = () => {
   return (
@@ -20,7 +20,7 @@ const Footer = () => {
           <img
             src={logoWhite}
             alt="Holidaze logo"
-            className="h-8 w-25 object-cover sm:h-12 sm:w-40"
+            className="w-25 object-cover sm:w-40"
           />
           <p className="text-xs sm:text-sm">Copyright © 2026 Holidaze</p>
         </div>

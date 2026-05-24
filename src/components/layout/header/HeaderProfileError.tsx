@@ -1,4 +1,4 @@
-import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
+import avatarFallbackImg from "../../../assets/avatar-fallback-img.jpg";
 
 const HeaderProfileError = () => {
   return (

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import type { Profile } from "../../../types/profile";
-import avatarFallbackImg from "../../../../public/avatar-fallback-img.jpg";
+import avatarFallbackImg from "../../../assets/avatar-fallback-img.jpg";
 import VenueManagerSwitch from "./VenueManagerSwitch";
 import EditBio from "./EditBio";
 import EditAvatarModal from "./modals/EditAvatarModal";
