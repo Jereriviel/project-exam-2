@@ -1,5 +1,6 @@
 import type { Venue } from "../../../../types/venue";
 import { pluralize } from "../../../../utils/pluralize";
+import { Link } from "react-router-dom";
 
 interface VenueCardInfoProps {
   venue: Venue;
@@ -16,12 +17,17 @@ const VenueCardInfo = ({ venue }: VenueCardInfoProps) => {
         <span className="iconify-[material-symbols--star]"></span>
         {`${venue.rating} stars`}
       </li>
-      <li className="flex items-center gap-4">
-        <span className="iconify-[material-symbols--calendar-month]"></span>
-        {`${upcomingBookings} upcoming ${pluralize(
-          upcomingBookings,
-          "booking",
-        )}`}
+      <li>
+        <Link
+          to={`/venue/${venue.id}`}
+          className="hover:text-primary flex items-center gap-4 transition duration-500 ease-in-out"
+        >
+          <span className="iconify-[material-symbols--calendar-month]"></span>
+          {`${upcomingBookings} upcoming ${pluralize(
+            upcomingBookings,
+            "booking",
+          )}`}
+        </Link>
       </li>
       <li className="flex items-center gap-4">
         <span className="iconify-[mdi--users]"></span>
