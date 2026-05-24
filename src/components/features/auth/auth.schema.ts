@@ -24,6 +24,7 @@ export const registerSchema = authSchema
         /^[a-zA-Z0-9_]+$/,
         "Name must not contain punctuation symbols apart from underscore (_)",
       ),
+    venueManager: z.boolean(),
     confirmPassword: z.string().min(1, "Please confirm your password"),
   })
   .refine((data) => data.password === data.confirmPassword, {

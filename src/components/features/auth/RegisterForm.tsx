@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { Controller } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { registerSchema, type RegisterRequest } from "./auth.schema";
@@ -11,6 +12,7 @@ import ErrorModal from "../../ui/ErrorModal";
 import { ApiError } from "../../../error/ApiError";
 import { registerUser, loginUser } from "../../../api/auth";
 import { useAuth } from "../../../hooks/useAuth";
+import VenueManagerSwitch from "../profile/VenueManagerSwitch";
 
 const RegisterForm = () => {
   const { login } = useAuth();
@@ -21,6 +23,7 @@ const RegisterForm = () => {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<RegisterRequest>({
     resolver: zodResolver(registerSchema),
@@ -31,6 +34,7 @@ const RegisterForm = () => {
       email: "",
       password: "",
       confirmPassword: "",
+      venueManager: false,
     },
   });
 
@@ -94,6 +98,23 @@ const RegisterForm = () => {
               error={errors.confirmPassword?.message}
               type="password"
               {...register("confirmPassword")}
+            />
+            <Controller
+              name="venueManager"
+              control={control}
+              render={({ field }) => (
+                <Field className="flex flex-col gap-1">
+                  <label className="font-semibold">
+                    Register as Venue Manager?
+                  </label>
+
+                  <VenueManagerSwitch
+                    enabled={field.value}
+                    onChange={field.onChange}
+                    disabled={isSubmitting}
+                  />
+                </Field>
+              )}
             />
             <Field>
               <button
