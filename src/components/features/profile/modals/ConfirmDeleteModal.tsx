@@ -26,6 +26,7 @@ const ConfirmDeleteModal = ({
         <p>{message}</p>
         <div className="flex w-full flex-col gap-4">
           <button
+            aria-label="Delete"
             className="btn-delete flex h-12 min-w-full items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
             onClick={onConfirm}
             disabled={isLoading}
@@ -33,6 +34,7 @@ const ConfirmDeleteModal = ({
             {isLoading ? <LoadingSpinner /> : confirmText}
           </button>
           <button
+            aria-label="Cancel"
             className="btn-secondary flex h-12 min-w-full items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
             onClick={onClose}
             disabled={isLoading}

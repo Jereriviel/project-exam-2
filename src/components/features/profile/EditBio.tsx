@@ -43,6 +43,7 @@ const EditBio = ({ profile, onSave, isUpdating }: EditBioProps) => {
         </div>
 
         <button
+          aria-label="Edit Bio"
           type="button"
           className="btn-primary-round"
           onClick={() => setIsEditing(true)}
@@ -67,6 +68,7 @@ const EditBio = ({ profile, onSave, isUpdating }: EditBioProps) => {
         <Field>
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-end">
             <button
+              aria-label="Save Changes"
               className={`btn-primary-sm flex h-10 items-center justify-center ${
                 isSubmitting || isUpdating
                   ? "cursor-not-allowed opacity-50"
@@ -79,6 +81,7 @@ const EditBio = ({ profile, onSave, isUpdating }: EditBioProps) => {
             </button>
 
             <button
+              aria-label="Cancel"
               type="button"
               className="btn-secondary-sm"
               onClick={() => setIsEditing(false)}

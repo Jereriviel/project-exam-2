@@ -48,6 +48,7 @@ const ProfileHeader = ({
                   }}
                 />
                 <button
+                  aria-label="Edit Avatar"
                   onClick={() => setIsAvatarModalOpen(true)}
                   className="btn-primary-round absolute right-0 bottom-0"
                 >

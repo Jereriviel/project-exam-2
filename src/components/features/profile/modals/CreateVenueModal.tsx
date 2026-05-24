@@ -197,6 +197,7 @@ const CreateVenueModal = ({ isOpen, onClose }: CreateVenueModalProps) => {
             </Field>
             <Field className="flex w-full flex-col gap-4 sm:flex-row sm:justify-between">
               <button
+                aria-label="Cancel"
                 type="button"
                 className="btn-secondary"
                 onClick={handleCloseModal}
@@ -204,6 +205,7 @@ const CreateVenueModal = ({ isOpen, onClose }: CreateVenueModalProps) => {
                 Cancel
               </button>
               <button
+                aria-label="Create Venue"
                 className="btn-primary flex h-12 min-w-35 items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
                 type="submit"
                 disabled={isSubmitting}

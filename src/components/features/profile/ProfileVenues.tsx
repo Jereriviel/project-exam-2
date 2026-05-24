@@ -36,6 +36,7 @@ const ProfileVenues = ({ venues }: ProfileVenuesProps) => {
               </p>
             </div>
             <button
+              aria-label="Add new venue"
               type="button"
               className="btn-primary flex items-center justify-center gap-2"
               onClick={() => setIsCreateModalOpen(true)}
@@ -77,6 +78,7 @@ const ProfileVenues = ({ venues }: ProfileVenuesProps) => {
           })}
         </div>
         <button
+          aria-label="Add new venue"
           type="button"
           className="btn-primary flex items-center justify-center gap-2"
           onClick={() => setIsCreateModalOpen(true)}

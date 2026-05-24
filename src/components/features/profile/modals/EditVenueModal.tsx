@@ -234,6 +234,7 @@ const EditVenueModal = ({ isOpen, onClose, venue }: EditVenueModalProps) => {
             </Field>
             <Field className="flex w-full flex-col gap-4 sm:flex-row sm:justify-between">
               <button
+                aria-label="Delete Venue"
                 type="button"
                 className="btn-delete flex h-12 items-center justify-center"
                 onClick={() => setIsDeleteModalOpen(true)}
@@ -241,6 +242,7 @@ const EditVenueModal = ({ isOpen, onClose, venue }: EditVenueModalProps) => {
                 Delete Venue
               </button>
               <button
+                aria-label="Save Changes"
                 type="submit"
                 className="btn-primary flex h-12 min-w-36 items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
                 disabled={isSubmitting}

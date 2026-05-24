@@ -167,12 +167,14 @@ const EditBookingModal = ({
           />
           <div className="flex w-full flex-col gap-4">
             <button
+              aria-label="Delete booking"
               className="btn-delete flex h-12 min-w-full items-center justify-center"
               onClick={() => setIsDeleteModalOpen(true)}
             >
               Delete Booking
             </button>
             <button
+              aria-label="Save Changes"
               className="btn-primary flex h-12 min-w-full items-center justify-center disabled:cursor-not-allowed disabled:opacity-50"
               onClick={handleSaveChanges}
               disabled={isBookingDisabled}

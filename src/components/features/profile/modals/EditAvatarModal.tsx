@@ -78,10 +78,16 @@ const EditAvatarModal = ({
           </Field>
 
           <div className="flex flex-col gap-4 sm:flex-row sm:justify-between">
-            <button type="button" className="btn-secondary" onClick={onClose}>
+            <button
+              aria-label="Cancel"
+              type="button"
+              className="btn-secondary"
+              onClick={onClose}
+            >
               Cancel
             </button>
             <button
+              aria-label="Save Changes"
               type="submit"
               className={`btn-primary flex h-12 items-center justify-center ${
                 isSubmitting || isUpdating

@@ -15,6 +15,7 @@ const VenueManagerSwitch = ({
   return (
     <div className="flex gap-4">
       <Switch
+        aria-label="Venue Manager"
         checked={enabled}
         onChange={onChange}
         disabled={disabled}
